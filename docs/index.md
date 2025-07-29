@@ -1,4 +1,4 @@
-# Renesas RZ Linux Solution
+# Renesas RZ Linux Solutions
 
 {% include "./home/_components/__front_matter.md" %}
 
