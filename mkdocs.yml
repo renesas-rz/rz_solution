@@ -51,6 +51,10 @@ extra:
   announcements_urls:
     - available: '#whats-new'
   header_link: true
+  footer_link:
+    - link: legal_notices/
+      name: Notices & Terms
+      new_tab: true
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/renesas-rz
