@@ -1,1 +1,1 @@
-**Announcement!** RZ/G2L Linux BSP Plus *Kernel 6.12 Yocto 5.0 (Scarthgap)*, RZ/G2L Ubuntu 24.04 and RZ/G2L Debian 13 (trixie) are available.
+**Announcement!** RZ Linux BSP Plus for Kernel 6.12 and RZ/G2L Ubuntu 24.04 and RZ/G2L Debian 13 (trixie) are available.
