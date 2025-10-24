@@ -39,4 +39,5 @@ jobs:
 
       - name: Compile Documentations and Deploy
         run: |
+          export GOOGLE_ANALYTICS_KEY=$(cat g-analytics-key.txt)
           mkdocs gh-deploy --force
