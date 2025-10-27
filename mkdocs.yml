@@ -9,6 +9,7 @@ repo_url: https://github.com/renesas-rz/rz_solution
 nav:
   # - Guidelines: guidelines/index.md
   - Home: index.md
+  - Policy: policy/index.md
 
 theme:
   name: material
