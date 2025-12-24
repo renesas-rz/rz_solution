@@ -770,3 +770,129 @@ p.hash + .language-bash code>span::before {
 a.md-source[target=_blank].footer-link::after {
   margin-top: 0.375em;
 }
+
+/* Top Page Card Tags  */
+/* =================== */
+.tag_supported {
+  display: inline-block;
+  background-color: var(--renesas-primary-color-fg-blue);
+  color: #fff;
+  padding: 0.125rem 0.5rem;
+  border-radius: 1.25rem;
+  margin: 0.125rem;
+  font-size: 0.8em;
+  position: relative;
+}
+
+.tag_supported::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.tag_supported:hover::after {
+  opacity: 1;
+}
+
+.tag_planning {
+  display: inline-block;
+  background-color: var(--renesas-primary-color-fg-grey);
+  color: #fff;
+  padding: 0.125rem 0.5rem;
+  border-radius: 1.25rem;
+  margin: 0.125rem;
+  font-size: 0.8em;
+  position: relative;
+}
+
+.tag_planning::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.tag_planning:hover::after {
+  opacity: 1;
+}
+
+/* Table for MPU Support List */
+/* ========================== */
+.md-supportlist table td:nth-child(even) {
+    background-color: var(--renesas-secondary-color-bg-blue) !important;
+}
+.md-supportlist table td:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.md-supportlist th,
+.md-supportlist td {
+  text-align: center!important;
+}
+
+/* Solution banner */
+/* =============== */
+.banner-hover-effect {
+  size: 3.5rem !important;
+  transition: opacity 0.3s ease;
+}
+
+.banner-hover-effect img {
+  width: auto;
+  height: 3.5rem;
+  max-width: auto;
+  transition: transform 0.3s ease;
+}
+
+.banner-hover-effect:hover {
+  opacity: 0.6;
+}
+
+.banner-hover-non-effect {
+  size: 3.5rem !important;
+}
+
+.banner-hover-non-effect img {
+  width: auto;
+  height: 3.5rem;
+  max-width: auto;
+}
+
+/* Solution Introduction Card  */
+/* =========================== */
+.custom-bg {
+  background-color: var(--renesas-secondary-color-bg-blue);
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  transition: background-color 0.3s ease;
+}
+
+.custom-bg:hover {
+  background-color: #e6f2ff;
+}
+
+.text-highlight {
+  color: var(--renesas-primary-color-fg-blue);
+  font-weight: bold;
+}
