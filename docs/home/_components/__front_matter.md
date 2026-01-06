@@ -1,6 +1,6 @@
 <div class="grid cards" markdown>
 - <span class="banner-hover-effect">[![BSP Plus Link](home/images/Button_LinuxBSPPlus.png)](https://renesas-rz.github.io/rz_linux_bsp_plus/)</span><br>
-  <span class="tag_supported" data-tooltip="Supported">RZ/G</span> <span class="tag_planning" data-tooltip="Planning">RZ/V</span> <span class="tag_planning" data-tooltip="Planning">RZ/T</span> <span class="tag_planning" data-tooltip="Planning">RZ/N</span><br>
+  <span class="tag_supported" data-tooltip="Supported">RZ/G</span> <span class="tag_planning" data-tooltip="Planning">RZ/V</span> <span class="tag_supported" data-tooltip="Supported">RZ/T</span> <span class="tag_supported" data-tooltip="Supported">RZ/N</span><br>
   Latest LTS kernel & Latest Yocto Linux BSP + Standard S/W<br>
   <span class="text-highlight">
   Release Cadence : Annual<br>
@@ -9,7 +9,7 @@
 {: .custom-bg }
 
 - <span class="banner-hover-effect">[![VLP Link](home/images/Button_VLP.png)](https://www.renesas.com/en/products/microcontrollers-microprocessors/rz-mpus/rzg-series/verified-linux-package)</span><br>
-  <span class="tag_supported" data-tooltip="Supported">RZ/G</span> <span class="tag_supported" data-tooltip="Supported">RZ/V</span> <span class="tag_planning" data-tooltip="Planning">RZ/T</span> <span class="tag_planning" data-tooltip="Planning">RZ/N</span><br>
+  <span class="tag_supported" data-tooltip="Supported">RZ/G</span> <span class="tag_supported" data-tooltip="Supported">RZ/V</span> <span class="tag_supported" data-tooltip="Supported">RZ/T</span> <span class="tag_supported" data-tooltip="Supported">RZ/N</span><br>
   CIP/SLTS Kernel based on the latest Linux BSP Plus Verified by Renesas<br>
   <span class="text-highlight">
   Release Cadence : Every 2yrs<br>
@@ -52,14 +52,14 @@
     | RZ/G2UL             | ✓                 | ✓             |                    |  ✓ (HMI SDK)            |
     | RZ/FIVE             |                    | ✓             |                    |                          |
     | RZ/G3S              | ✓                 |  ✓             |                    |                          |
-    | RZ/G3E              | Coming in 2026     | ✓             | Coming in 2025     | Coming in 2026 (HMI SDK) |
+    | RZ/G3E              | Coming in 2026     | ✓             | ✓                  | Coming in 2026 (HMI SDK) |
     | RZ/V2M              |                    |  ✓             |                    |                          |
     | RZ/V2MA             |                    |  ✓             |                    |                          |
     | RZ/V2L              | Coming in 2026     | ✓             |                    |  ✓ (AI SDK)              |
     | RZ/V2H              | Coming in 2026     |                | Coming in 2026     | ✓ (AI SDK)              |
     | RZ/V2N              | Coming in 2026     |                |                    |  ✓ (AI SDK)              |
-    | RZ/T2H              | Coming in 2025     | Coming in 2025 |                    |                          |
-    | RZ/N2H              | Coming in 2025     | Coming in 2025 |                    |                          |
+    | RZ/T2H              | ✓                 | ✓             |                    |                          |
+    | RZ/N2H              | ✓                 | ✓             |                    |                          |
 </div>
 >*1 Support for each VLP version is as follows<br>
 >VLPv1(Kernel4.10): RZ/G2H, RZ/G2M, RZ/G2N, RZ/G2E<br>
