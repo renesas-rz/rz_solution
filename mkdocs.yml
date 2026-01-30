@@ -40,7 +40,7 @@ theme:
   palette:
     primary: custom
 
-copyright: '&copy;2025 Renesas Electronics Corporation.'
+copyright: '&copy;2025, 2026 Renesas Electronics Corporation.'
 
 extra:
   # announcements will be over-written from docs/_announcements/announcements.md (markdown)

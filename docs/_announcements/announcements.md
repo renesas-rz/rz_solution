@@ -1,1 +1,1 @@
-**Announcement!** RZ Linux BSP Plus for Kernel 6.12, RZ/G3E Ubuntu 24.04, and RZ/G3E Debian 13 (trixie) are available.
+**Announcement!** RZ Linux BSP Plus for Kernel 6.12 v3.0 and RZ/G HMI SDK v3.4.0.0 are available.

@@ -43,23 +43,23 @@
 <div class="md-supportlist" markdown>
 !!! content-wrapper no-indent table-no-sort table-no-hover ""
 
-    |                     | **Linux BSP Plus** | **VLP\*1**     | **Ubuntu/Debian** | **SDK**                   |
-    |---------------------|--------------------|----------------|-------------------|---------------------------|
-    | RZ/G1H, M,N,E,C     |                    | ✓             |                    |                          |
-    | RZ/G2H, M,N,E       |                    | ✓             |                    |                          |
-    | RZ/G2L              | ✓                 |  ✓             | ✓                 | ✓ (HMI SDK)             |
-    | RZ/G2LC             | ✓                 |  ✓             |                    | ✓ (HMI SDK)             |
-    | RZ/G2UL             | ✓                 | ✓             |                    |  ✓ (HMI SDK)            |
-    | RZ/FIVE             |                    | ✓             |                    |                          |
-    | RZ/G3S              | ✓                 |  ✓             |                    |                          |
-    | RZ/G3E              | Coming in 2026     | ✓             | ✓                  | Coming in 2026 (HMI SDK) |
-    | RZ/V2M              |                    |  ✓             |                    |                          |
-    | RZ/V2MA             |                    |  ✓             |                    |                          |
-    | RZ/V2L              | Coming in 2026     | ✓             |                    |  ✓ (AI SDK)              |
-    | RZ/V2H              | Coming in 2026     |                | Coming in 2026     | ✓ (AI SDK)              |
-    | RZ/V2N              | Coming in 2026     |                |                    |  ✓ (AI SDK)              |
-    | RZ/T2H              | ✓                 | ✓             |                    |                          |
-    | RZ/N2H              | ✓                 | ✓             |                    |                          |
+    |                     | **Linux BSP Plus** | **VLP\*1**     | **Ubuntu/Debian** | **SDK**                 |
+    |---------------------|--------------------|----------------|-------------------|-------------------------|
+    | RZ/G1H, M,N,E,C     |                    | ✓              |                   |                         |
+    | RZ/G2H, M,N,E       |                    | ✓              |                   |                         |
+    | RZ/G2L              | ✓                  | ✓              | ✓                 | ✓ (HMI SDK)             |
+    | RZ/G2LC             | ✓                  | ✓              |                   | ✓ (HMI SDK)             |
+    | RZ/G2UL             | ✓                  | ✓              |                   | ✓ (HMI SDK)             |
+    | RZ/FIVE             |                    | ✓              |                   |                         |
+    | RZ/G3S              | ✓                  | ✓              |                   |                         |
+    | RZ/G3E              | Coming in 2026     | ✓              | ✓                 | ✓ (HMI SDK)             |
+    | RZ/V2M              |                    | ✓              |                   |                         |
+    | RZ/V2MA             |                    | ✓              |                   |                         |
+    | RZ/V2L              | Coming in 2026     | ✓              |                   | ✓ (AI SDK)              |
+    | RZ/V2H              | Coming in 2026     |                | Coming in 2026    | ✓ (AI SDK)              |
+    | RZ/V2N              | Coming in 2026     |                |                   | ✓ (AI SDK)              |
+    | RZ/T2H              | ✓                  | ✓              |                   |                         |
+    | RZ/N2H              | ✓                  | ✓              |                   |                         |
 </div>
 >*1 Support for each VLP version is as follows<br>
 >VLPv1(Kernel4.10): RZ/G2H, RZ/G2M, RZ/G2N, RZ/G2E<br>
