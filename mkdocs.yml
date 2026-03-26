@@ -10,6 +10,7 @@ nav:
   # - Guidelines: guidelines/index.md
   - Home: index.md
   - Policy: policy/index.md
+  - Knowledge Base: knowledge_base/index.md
 
 theme:
   name: material
@@ -117,6 +118,7 @@ plugins:
         - history/_*/*
         - home/_*
         - home/*.md
+        - knowledge_base/_*/*
   - glightbox
   - include-markdown
   # - mkdocs-video
