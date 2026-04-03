@@ -8,7 +8,7 @@
   </span>
 {: .custom-bg }
 
-- <span class="banner-hover-effect">[![VLP Link](home/images/Button_VLP.png)](https://www.renesas.com/en/products/microcontrollers-microprocessors/rz-mpus/rzg-series/verified-linux-package)</span><br>
+- <span class="banner-hover-effect">[![VLP Link](home/images/Button_VLP.png)](https://renesas-rz.github.io/rz_verified_linux_package/)</span><br>
   <span class="tag_supported" data-tooltip="Supported">RZ/G</span> <span class="tag_supported" data-tooltip="Supported">RZ/V</span> <span class="tag_supported" data-tooltip="Supported">RZ/T</span> <span class="tag_supported" data-tooltip="Supported">RZ/N</span><br>
   CIP/SLTS Kernel based on the latest Linux BSP Plus Verified by Renesas<br>
   <span class="text-highlight">

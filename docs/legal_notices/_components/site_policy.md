@@ -8,6 +8,7 @@ The usage conditions apply to the use of the Web sites listed below (collectivel
 
 - [Renesas RZ Linux Solutions](https://renesas-rz.github.io/rz_solution/)
 - [Renesas RZ Linux BSP Plus](https://renesas-rz.github.io/rz_linux_bsp_plus/)
+- [Verified Linux Package for RZ MPU](https://renesas-rz.github.io/rz_verified_linux_package/)
 - [Ubuntu and Debian for RZ MPU Linux](https://renesas-rz.github.io/rz_linux_distros/)
 - [Renesas RZ/G HMI SDK](https://renesas-rz.github.io/rzg_hmi_sdk/latest/)
 
