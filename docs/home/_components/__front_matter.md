@@ -52,12 +52,12 @@
     | RZ/G2UL             | ✓                  | ✓              |                   | ✓ (HMI SDK)             |
     | RZ/FIVE             |                    | ✓              |                   |                         |
     | RZ/G3S              | ✓                  | ✓              |                   |                         |
-    | RZ/G3E              | Coming in 2026     | ✓              | ✓                 | ✓ (HMI SDK)             |
+    | RZ/G3E              | Coming in 2026/4Q  | ✓              | ✓                 | ✓ (HMI SDK)             |
     | RZ/V2M              |                    | ✓              |                   |                         |
     | RZ/V2MA             |                    | ✓              |                   |                         |
-    | RZ/V2L              | Coming in 2026     | ✓              |                   | ✓ (AI SDK)              |
-    | RZ/V2H              | Coming in 2026     |                | Coming in 2026    | ✓ (AI SDK)              |
-    | RZ/V2N              | Coming in 2026     |                |                   | ✓ (AI SDK)              |
+    | RZ/V2L              | Coming in 2026/4Q  | ✓              |                   | ✓ (AI SDK)              |
+    | RZ/V2H              | Coming in 2026/4Q  |                |                   | ✓ (AI SDK)              |
+    | RZ/V2N              | Coming in 2026/4Q  |                |                   | ✓ (AI SDK)              |
     | RZ/T2H              | ✓                  | ✓              |                   |                         |
     | RZ/N2H              | ✓                  | ✓              |                   |                         |
 </div>
