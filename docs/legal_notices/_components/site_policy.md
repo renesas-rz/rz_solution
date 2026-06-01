@@ -11,6 +11,7 @@ The usage conditions apply to the use of the Web sites listed below (collectivel
 - [Verified Linux Package for RZ MPU](https://renesas-rz.github.io/rz_verified_linux_package/)
 - [Ubuntu and Debian for RZ MPU Linux](https://renesas-rz.github.io/rz_linux_distros/)
 - [Renesas RZ/G HMI SDK](https://renesas-rz.github.io/rzg_hmi_sdk/latest/)
+- [RZ/G3E NPU (Ethos-U55) Support Documentation](https://renesas-rz.github.io/rz-ethos-u-docs/)
 
 The Sites contain links to external Web sites administered by affiliated companies. Note that such Web sites may be subject to their own usage conditions, which are specified therein.
 
