@@ -39,9 +39,8 @@ This section collects useful references for RZ MPU platforms, including Renesas-
 RZ Software source code, Yocto meta-layers, and documents are hosted in git repositories on GitHub ([renesas-rz](https://github.com/renesas-rz){: target=_blank }).
 
 * [Linux Kernel](https://github.com/renesas-rz/rz_linux-cip){: target=_blank } — Linux kernel for RZ MPU Linux BSP. For information about the kernel, see [wiki](https://github.com/renesas-rz/rz_linux-cip/wiki){: target=_blank }.
-* [u-boot](https://github.com/renesas-rz/renesas-u-boot-cip) — U-boot for RZ MPU Linux BSP. For information about the u-boot, see [wiki](https://github.com/renesas-rz/renesas-u-boot-cip/wiki){: target=_blank }.
+* [u-boot](https://github.com/renesas-rz/renesas-u-boot-cip){: target=_blank } — U-boot for RZ MPU Linux BSP. For information about the u-boot, see [wiki](https://github.com/renesas-rz/renesas-u-boot-cip/wiki){: target=_blank }.
 * [Trusted Firmware-A](https://github.com/renesas-rz/rzg_trusted-firmware-a){: target=_blank } — Trusted Firmware-A (TF-A) for RZ MPU. For information about the TF-A, see [wiki](https://github.com/renesas-rz/rzg_trusted-firmware-a/wiki){: target=_blank }.
 * [Boot Loader Programmer](https://github.com/renesas-rz/rzg2_flash_writer){: target=_blank } — Flash Writer for RZ MPU. For information about the flash writer, see [README](https://github.com/renesas-rz/rzg2_flash_writer/blob/master/README.md){: target=_blank } and [wiki](https://github.com/renesas-rz/rzg_trusted-firmware-a/wiki){: target=_blank }.
 * [Yocto meta-layer for RZ Linux BSP](https://github.com/renesas-rz/meta-renesas){: target=_blank } — For information about the meta-layer, see [README](https://github.com/renesas-rz/meta-renesas/blob/scarthgap/rz/README.md){: target=_blank }.
 * [Yocto meta-layer for RZ/G Linux HMI SDK](https://github.com/renesas-rz/meta-rz-demos){: target=_blank } — For information about the SDK, visit [the HMI SDK website](https://renesas-rz.github.io/rzg_hmi_sdk/latest/){: target=_blank }.
-
