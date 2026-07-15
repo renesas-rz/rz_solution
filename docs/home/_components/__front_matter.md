@@ -36,6 +36,12 @@
   </span>
 {: .custom-bg }
 
+- <span class="banner-hover-non-effect">[![SDK Link](home/images/Button_AOSP.png)](https://renesas-rz.github.io/rz_aosp)</span><br>
+  <span class="tag_planning" data-tooltip="Planning">RZ/G</span> <span class="tag_supported" data-tooltip="Supported">RZ/V</span><br>
+    Software package based on AOSP with development tools,
+    system libraries, and graphics and multimedia support.<br>
+    <small>_Android is a trademark of Google LLC._</small>
+{: .custom-bg }
 
 </div>
 
