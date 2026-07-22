@@ -6,13 +6,13 @@ Persons using the following Renesas Electronics Web sites (referred to as "Visit
 
 The usage conditions apply to the use of the Web sites listed below (collectively referred to as "Sites") operated by Renesas Electronics.
 
-- [Renesas RZ Linux Solutions](https://renesas-rz.github.io/rz_solution/)
-- [Renesas RZ Linux BSP Plus](https://renesas-rz.github.io/rz_linux_bsp_plus/)
-- [Verified Linux Package for RZ MPU](https://renesas-rz.github.io/rz_verified_linux_package/)
-- [Ubuntu and Debian for RZ MPU Linux](https://renesas-rz.github.io/rz_linux_distros/)
-- [Renesas RZ/G HMI SDK](https://renesas-rz.github.io/rzg_hmi_sdk/latest/)
-- [RZ/G3E NPU (Ethos-U55) Support Documentation](https://renesas-rz.github.io/rz-ethos-u-docs/)
-- [Renesas RZ AOSP](https://renesas-rz.github.io/rz_aosp/)
+- [Renesas RZ Linux Solutions](https://renesas-rz.github.io/rz_solution/){: target=_blank }
+- [Renesas RZ Linux BSP Plus](https://renesas-rz.github.io/rz_linux_bsp_plus/){: target=_blank }
+- [Verified Linux Package for RZ MPU](https://renesas-rz.github.io/rz_verified_linux_package/){: target=_blank }
+- [Ubuntu and Debian for RZ MPU Linux](https://renesas-rz.github.io/rz_linux_distros/){: target=_blank }
+- [Renesas RZ/G HMI SDK](https://renesas-rz.github.io/rzg_hmi_sdk/){: target=_blank }
+- [RZ/G3E NPU (Ethos-U55) Support Documentation](https://renesas-rz.github.io/rz-ethos-u-docs/){: target=_blank }
+- [Renesas RZ AOSP](https://renesas-rz.github.io/rz_aosp/){: target=_blank }
 
 The Sites contain links to external Web sites administered by affiliated companies. Note that such Web sites may be subject to their own usage conditions, which are specified therein.
 
@@ -68,4 +68,3 @@ Trade names, trademarks, marks, and emblems of Renesas Electronics, affiliated c
 ### Applicable Laws and Court Jurisdiction
 
 Japanese law applies to the Sites and the Web site usage conditions. In the event of any dispute regarding the Sites or the Web site usage conditions may arise, the court of first instance having exclusive jurisdiction shall be the Tokyo District Court.
-
