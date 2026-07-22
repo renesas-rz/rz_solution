@@ -1,4 +1,14 @@
+---
+inline_toc: true
+---
+
 # Related Resources and External Links
+
+{% if inline_toc %}
+!!! content-wrapper no-indent inline-toc ""
+
+    [TOC]
+{% endif %}
 
 {% include "./_components/linux-kernel_and_Yocto-project.md" %}
 

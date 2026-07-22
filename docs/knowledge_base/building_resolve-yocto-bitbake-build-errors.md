@@ -1,14 +1,24 @@
+---
+inline_toc: true
+---
+
 # How to resolve Yocto Bitbake build errors
 
 !!! abstract "Page Information"
-    Last updated: ***March 26, 2026***
+    Last updated: ***July 27, 2026***
+
+{% if inline_toc %}
+!!! content-wrapper no-indent inline-toc ""
+
+    [TOC]
+{% endif %}
 
 There are various reasons for errors or forced termination, but the following are some possible causes.
 
 - [Errors in fetching the source code (do_fetch)](#errors-in-fetching-the-source-code-do_fetch)
 - [Other errors](#other-errors)
 
-<!-- 
+<!--
 TODO:
 When content increases, create sections according to Bitbake tasks such as do_fetch, do_compile, and so on.
 -->
@@ -48,6 +58,12 @@ If you cannot find an alternative download location, using a source code package
 Some RZ Linux solutions provide source code packages that allow you to build the Linux environment offline.
 Please refer to the manual for each solution for details.
 
+!!! note
+
+    Renesas is providing update for active BSP/VLP/SDK to counter missing package.
+
+    Please see [How to Apply a Patch to the Renesas Yocto Build Layer](./early_access_fixes.md#how-to-apply-a-patch-to-the-renesas-yocto-build-layer) at [Early Access Fixes for VLP](./early_access_fixes.md).
+
 
 ## Other errors
 
@@ -72,15 +88,16 @@ Adjust them according to the available memory and CPU resources of your build en
 
 For more detailed information, refer to the following links.
 
-* Yocto 5.0 (scarthgap)
+=== "Yocto 5.0 (Scarthgap)"
+
     * [BB_NUMBER_THREADS](https://docs.yoctoproject.org/5.0.12/ref-manual/variables.html#term-BB_NUMBER_THREADS){: target=_blank }
     * [PARALLEL_MAKE](https://docs.yoctoproject.org/5.0.12/ref-manual/variables.html#term-PARALLEL_MAKE){: target=_blank }
 
     See also [Speeding Up a Build](https://docs.yoctoproject.org/5.0.12/dev-manual/speeding-up-build.html#speeding-up-a-build){: target=_blank }.
 
-* Yoct 3.1 (dunfell)
+=== "Yocto 3.1 (Dunfell)"
+
     * [BB_NUMBER_THREADS](https://docs.yoctoproject.org/3.1/ref-manual/ref-manual.html#var-BB_NUMBER_THREADS){: target=_blank }
     * [PARALLEL_MAKE](https://docs.yoctoproject.org/3.1/ref-manual/ref-manual.html#var-PARALLEL_MAKE){: target=_blank }
 
     See also [Speeding Up a Build](https://docs.yoctoproject.org/3.1/dev-manual/dev-manual.html#speeding-up-a-build){: target=_blank }.
-

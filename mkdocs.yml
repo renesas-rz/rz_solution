@@ -102,6 +102,7 @@ extra_css:
   - assets/stylesheets/toc.css
 
 extra_javascript:
+  - assets/javascripts/tablecommit.js
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - assets/javascripts/tablesort.js
   - pagefind/pagefind-ui.js
@@ -168,6 +169,7 @@ plugins:
           remove_comments: true
       cache_safe: true
       js_files:
+          - assets/javascripts/tablecommit.js
           - assets/javascripts/tablesort.js
           - assets/javascripts/pagefind_search.js
           - assets/javascripts/toc.js

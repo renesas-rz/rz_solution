@@ -773,7 +773,8 @@ a.md-source[target=_blank].footer-link::after {
 
 /* Top Page Card Tags  */
 /* =================== */
-.tag_supported {
+.tag_supported,
+.tag_planning {
   display: inline-block;
   background-color: var(--renesas-primary-color-fg-blue);
   color: #fff;
@@ -784,38 +785,7 @@ a.md-source[target=_blank].footer-link::after {
   position: relative;
 }
 
-.tag_supported::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 120%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.75em;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.tag_supported:hover::after {
-  opacity: 1;
-}
-
-.tag_planning {
-  display: inline-block;
-  background-color: var(--renesas-primary-color-fg-grey);
-  color: #fff;
-  padding: 0.125rem 0.5rem;
-  border-radius: 1.25rem;
-  margin: 0.125rem;
-  font-size: 0.8em;
-  position: relative;
-}
-
+.tag_supported::after,
 .tag_planning::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -833,8 +803,34 @@ a.md-source[target=_blank].footer-link::after {
   transition: opacity 0.3s ease;
 }
 
-.tag_planning:hover::after {
+.table_tootlip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75em;
+  font-weight: normal;
+  /* white-space: nowrap; */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  width: calc(100% - 1.5em);
+  box-shadow: var(--md-shadow-z3);
+}
+
+.tag_supported:hover::after,
+.tag_planning:hover::after,
+.table_tootlip:hover::before {
   opacity: 1;
+}
+
+.tag_planning {
+  background-color: var(--renesas-primary-color-fg-grey);
 }
 
 /* Table for MPU Support List */
