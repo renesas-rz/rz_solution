@@ -1,0 +1,5 @@
+Package,Target Users,Outline,Release Cadence,Support term
+Linux BSP Plus,Linux expert,Latest LTS Kernel and latest Yocto,Annual,1 yr
+Verified Linux Package (VLP),Linux expert,CIP SLTS Kernel based on the latest Linux<br/>BSP Plus verified by Renesas,Every 2 yrs,10 yrs
+Ubuntu / Debian,Users with development experience<br/>on Debian or Ubuntu,Latest Ubuntu/Debian based on the latest VLP,Every 2 yrs,2 yrs
+SDK,Beginners specialized for Applications,HMI SDK: GUI Framework<br/>AI SDK : Vision AI Application,Every 2 yrs,2 yrs

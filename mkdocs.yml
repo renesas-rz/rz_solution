@@ -31,13 +31,13 @@ theme:
     - search.suggest
     - toc.integrate
     - toc.follow
-  nav_top:
-    # logos:
-    #   - assets/icons/board.svg
-    #   - assets/icons/ai_sdk.svg
-    # btn:
-    #   name: Get the Board
-    #   url: download/
+  # nav_top:
+  #   logos:
+  #     - assets/icons/board.svg
+  #     - assets/icons/ai_sdk.svg
+  #   btn:
+  #     name: Get the Board
+  #     url: download/
   palette:
     primary: custom
 
@@ -114,7 +114,8 @@ markdown_extensions:
   - admonition
   - attr_list
   - footnotes
-  - markdown_grid_tables
+  - markdown_grid_tables:
+      hard_linebreaks: false
   - md_in_html
   - pymdownx.caret
   - pymdownx.critic

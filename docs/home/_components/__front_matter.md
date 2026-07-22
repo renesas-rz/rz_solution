@@ -36,7 +36,7 @@
   </span>
 {: .custom-bg }
 
-- <span class="banner-hover-non-effect">[![SDK Link](home/images/Button_AOSP.png)](https://renesas-rz.github.io/rz_aosp)</span><br>
+- <span class="banner-hover-effect">[![AOSP Link](home/images/Button_AOSP.png)](https://renesas-rz.github.io/rz_aosp)</span><br>
   <span class="tag_planning" data-tooltip="Planning">RZ/G</span> <span class="tag_supported" data-tooltip="Supported">RZ/V</span><br>
     Software package based on AOSP with development tools,
     system libraries, and graphics and multimedia support.<br>
@@ -46,30 +46,15 @@
 </div>
 
 ### Supported MPU List
-<div class="md-supportlist" markdown>
-!!! content-wrapper no-indent table-no-sort table-no-hover ""
 
-    |                     | **Linux BSP Plus** | **VLP\*1**     | **Ubuntu/Debian** | **SDK**                 | **AOSP**    |
-    |---------------------|--------------------|----------------|-------------------|-------------------------|-------------|
-    | RZ/G1H, M,N,E,C     |                    | ✓              |                   |                         |             |
-    | RZ/G2H, M,N,E       |                    | ✓              |                   |                         |             |
-    | RZ/G2L              | ✓                  | ✓              | ✓                 | ✓ (HMI SDK)             |             |
-    | RZ/G2LC             | ✓                  | ✓              |                   | ✓ (HMI SDK)             |             |
-    | RZ/G2UL             | ✓                  | ✓              |                   | ✓ (HMI SDK)             |             |
-    | RZ/FIVE             |                    | ✓              |                   |                         |             |
-    | RZ/G3S              | ✓                  | ✓              |                   |                         |             |
-    | RZ/G3E              | Coming in 2026/4Q  | ✓              | ✓                 | ✓ (HMI SDK)             |             |
-    | RZ/V2M              |                    | ✓              |                   |                         |             |
-    | RZ/V2MA             |                    | ✓              |                   |                         |             |
-    | RZ/V2L              | Coming in 2026/4Q  | ✓              |                   | ✓ (AI SDK)              |             |
-    | RZ/V2H              | Coming in 2026/4Q  |                |                   | ✓ (AI SDK)              | ✓           |
-    | RZ/V2N              | Coming in 2026/4Q  |                |                   | ✓ (AI SDK)              |             |
-    | RZ/T2H              | ✓                  | ✓              |                   |                         |             |
-    | RZ/N2H              | ✓                  | ✓              |                   |                         |             |
-</div>
->*1 Support for each VLP version is as follows<br>
->VLPv1(Kernel4.10): RZ/G2H, RZ/G2M, RZ/G2N, RZ/G2E<br>
->VLPv2(Kernel4.4): RZ/G1H, RZ/G1M, RZ/G1N, RZ/G1E, RZ/G1C<br>
->VLPv3(Kernel5.10): RZ/G1H, RZ/G1M, RZ/G1N, RZ/G1E, RZ/G1C, RZ/G2H, RZ/G2M, RZ/G2N, RZ/G2E, RZ/G2L, RZ/G2LC, RZ/G2UL, RZ/G3S, RZ/FIVE, RZ/G3S, RZ/V2M, RZ/V2MA, RZ/V2L<br>
->VLPv4(Kernel6.1): RZ/G2L, RZ/G2LC, RZ/G2UL, RZ/G3S<br>
->VLPv5(Kernel6.12): RZ/T2H, RZ/N2H
+!!! content-wrapper no-indent table-no-sort  md-supportlist ""
+
+    {{ read_csv('home/_tables/supported_mpu_list.csv', na_filter=False) }}
+
+    1.  Support for each VLP version is as follows
+        *   VLPv1(Kernel4.10): RZ/G2H, RZ/G2M, RZ/G2N, RZ/G2E
+        *   VLPv2(Kernel4.4): RZ/G1H, RZ/G1M, RZ/G1N, RZ/G1E, RZ/G1C
+        *   VLPv3(Kernel5.10): RZ/G1H, RZ/G1M, RZ/G1N, RZ/G1E, RZ/G1C, RZ/G2H, RZ/G2M, RZ/G2N, RZ/G2E, RZ/G2L, RZ/G2LC, RZ/G2UL, RZ/G3S, RZ/FIVE, RZ/V2M, RZ/V2MA, RZ/V2L
+        *   VLPv4(Kernel6.1): RZ/G2L, RZ/G2LC, RZ/G2UL, RZ/G3S
+        *   VLPv5(Kernel6.12): RZ/T2H, RZ/N2H[↩](#tfref:1){: .tf-backref }
+    {: #tf:1 }

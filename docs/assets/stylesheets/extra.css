@@ -213,6 +213,10 @@
     color: white !important;
   }
 
+  thead th {
+    vertical-align: middle !important;
+  }
+
   tr {
     display: table-row;
     vertical-align: inherit;
@@ -231,6 +235,14 @@
     text-align: center !important;
     /* border: 0.025rem solid !important; */
     border-color: var(--renesas-primary-color-fg-grey) !important;
+
+    a {
+      color: white;
+    }
+
+    a:hover {
+      color: var(--renesas-secondary-color-fg-yellow);
+    }
   }
 
   th::after {
@@ -285,6 +297,10 @@
     margin-bottom: 0;
   }
 
+  ol {
+    list-style-type: decimal;
+  }
+
   li {
     line-height: .76rem;
     color: var(--md-default-fg-color--light);
@@ -292,8 +308,14 @@
     margin-left: 0.6em;
   }
 
+  td li {
+    color: var(--md-default-fg-color);
+  }
+
   li:target,
-  li:has(p:target) {
+  li:has(p:target),
+  li:has(li:target),
+  li:has(li:target) li {
     color: var(--md-default-fg-color);
   }
 
@@ -835,16 +857,38 @@ a.md-source[target=_blank].footer-link::after {
 
 /* Table for MPU Support List */
 /* ========================== */
-.md-supportlist table td:nth-child(even) {
-    background-color: var(--renesas-secondary-color-bg-blue) !important;
+.md-supportlist table td:nth-child(even),
+.md-supportlist table tr:has(.td-flip) td:nth-child(odd) {
+  background-color: var(--renesas-secondary-color-bg-blue);
 }
-.md-supportlist table td:nth-child(odd) {
-    background-color: #ffffff;
+
+.md-supportlist table td:nth-child(even):hover,
+.md-supportlist table tr:has(.td-flip) td:nth-child(odd):hover,
+.md-supportlist table tr:hover td:nth-child(even),
+.md-supportlist table tr:has(.td-flip):hover td:nth-child(odd) {
+  background-color: #e6f2ff;
+}
+
+.md-supportlist table tr:has(.td-flip) td:nth-child(even):hover,
+.md-supportlist table tr:has(.td-flip):hover td:nth-child(even) {
+  background-color: var(--md-typeset-table-color--lightest);
+}
+
+.md-supportlist table tr:has(.td-flip) td:nth-child(even) {
+  background-color: inherit;
 }
 
 .md-supportlist th,
 .md-supportlist td {
-  text-align: center!important;
+  text-align: center !important;
+}
+
+.md-supportlist td p:has(+ .td-flip) {
+  display: none;
+}
+
+.md-supportlist td .td-flip {
+  margin-top: 0;
 }
 
 /* Solution banner */
