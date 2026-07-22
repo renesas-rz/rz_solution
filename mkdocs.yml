@@ -99,6 +99,7 @@ extra_css:
   - assets/stylesheets/extra.css
   - pagefind/pagefind-ui.css
   - assets/stylesheets/pagefind_search.css
+  - assets/stylesheets/toc.css
 
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
@@ -106,6 +107,7 @@ extra_javascript:
   - pagefind/pagefind-ui.js
   - https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js
   - assets/javascripts/pagefind_search.js
+  - assets/javascripts/toc.js
 
 markdown_extensions:
   - admonition
@@ -168,9 +170,11 @@ plugins:
       js_files:
           - assets/javascripts/tablesort.js
           - assets/javascripts/pagefind_search.js
+          - assets/javascripts/toc.js
       css_files:
           - assets/stylesheets/extra.css
           - assets/stylesheets/pagefind_search.css
+          - assets/stylesheets/toc.css
   - table-reader
   # macros must be in the bottom one
   - macros

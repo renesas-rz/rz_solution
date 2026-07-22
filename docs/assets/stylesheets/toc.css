@@ -1,0 +1,73 @@
+.inline-toc {
+
+}
+
+.inline-toc .toc {
+  position: fixed;
+  width: 11.9rem;
+  margin-left: -13.15rem;
+  padding: .2rem;
+  background-color: var(--renesas-secondary-color-bg-blue-teal);
+  border: none;
+  border-radius: .4rem;
+  corner-shape: scoop;
+  box-shadow: var(--md-shadow-z1);
+  top: 18rem; /* fit below of knowledge base of nav menu */
+  max-height: calc(100vh - 19.8rem);
+  overflow-y: auto;
+  transition: height 0.3s ease-out;
+  scrollbar-width: thin;
+  scrollbar-color: var(--renesas-secondary-color-fg-blue-teal) var(--renesas-secondary-color-bg-blue-teal);
+  scrollbar-gutter: stable;
+}
+
+.inline-toc .toc ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0.525em !important;
+}
+
+.inline-toc .toc > ul > li > a {
+  font-weight: bold;
+}
+
+.inline-toc .toc > ul > li > ul {
+  padding-left: 0 !important;
+  margin-left: -.625em !important;
+}
+
+.inline-toc .toc > ul > li > ul > li > ul {
+  border-left: .05rem solid var(--md-primary-fg-color);
+  padding-left: .525em;
+  margin-left: 0 !important;
+}
+
+.inline-toc .toc li a {
+  text-decoration: none;
+  color: var(--md-typeset-color);
+  display: block;
+  padding: 5px 0;
+}
+
+.inline-toc .toc li a.passed {
+  color: var(--md-default-fg-color--light);
+}
+
+.inline-toc .toc li a.active {
+  color: var(--renesas-secondary-color-fg-blue-sky);
+}
+
+.inline-toc .toc li a:hover {
+  color: var(--renesas-secondary-color-fg-blue-teal);
+}
+
+@media screen and (max-width: 76.2344em) {
+  .inline-toc .toc {
+    position: relative;
+    width: 100%;
+    margin: 0 !important;
+    border-radius: .2rem;
+    top: unset;
+    max-height: unset;
+  }
+}
