@@ -409,19 +409,23 @@ document$.subscribe(function() {
   function mark() {
     const queries = window.location.href.replace(/\#.*/g, "").replace(/.*\?/g, "").split("&");
 
-    let key = "";
+    let keys = [];
     queries.forEach(query => {
       if (query.length > 2) {
         const el = query.split("=");
         if (el[0] === "h") {
-          key = el[1].split("%20")
+          keys = el[1].split("%20")
         }
       }
     });
 
     const context = document.querySelector(".md-content");
     const instance = new Mark(context);
-    instance.mark(key);
+    instance.mark(keys, {
+      "exclude": [
+        "svg *" // Ignores all matches inside SVG tags
+      ]
+    });
   }
 
   if (document.readyState === "loading") {

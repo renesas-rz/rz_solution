@@ -1,0 +1,61 @@
+<div class="grid cards" >
+  <ul>
+    {% for banner in banners %}
+      {% set svg_filter_id = "flat-recolor-" ~ loop.index %}
+      <li>
+        <div class="custom-bg">
+          <a href="{{ banner.url }}" target="_blank" class="banner-hover-effect">
+            <svg viewBox="0 0 290 70" height="70px" width="290px" xmlns="http://w3.org">
+              <defs>
+                <filter id="{{ svg_filter_id }}">
+                  <feFlood flood-color="var(--flood-color)" result="floodColor" />
+                  <feComposite in="floodColor" in2="SourceGraphic" operator="in" />
+                </filter>
+              </defs>
+              <image preserveAspectRatio="xMaxYMax meet" height="60" width="40" x="0" y="0" filter="url(#{{ svg_filter_id }})">
+              </image>
+              <text font-family="Arial Narrow" fill="var(--flood-color)" font-size="27px" font-weight="bold" x="45" y="40">
+                {{ banner.title }}
+              </text>
+              <text font-family="Arial Narrow" fill="var(--flood-color-2)" font-size="14px" x="45" y="60" font-style="italic">
+                {{ banner.subtitle }}
+              </text>
+            </svg>
+          </a>
+          <p class="banner-tags-area">
+            {% for mpu in banner.mpu %}
+              {% set _class = "tag_supported" %}
+              {% set _tooltip = "Supported" %}
+              {% if not mpu.supported %}
+                {% set _class = "tag_planning" %}
+                {% set _tooltip = "Planning" %}
+              {% endif %}
+              <span class="{{ _class }}" data-tooltip="{{ _tooltip }}">
+                {{ mpu.name }}
+              </span>
+            {% endfor %}
+          </p>
+          <p class="banner-description-area">
+            <span>
+              {{ banner.description }}
+            </span>
+          </p>
+          {% if banner.sub_description %}
+            <p class="banner-sub-description-area">
+              {{ banner.sub_description }}
+            </p>
+          {% endif %}
+          {% if banner.release_cadence and banner.support %}
+            <p class="banner-support-area">
+              <span class="text-highlight">
+                Release Cadence : {{ banner.release_cadence }}
+              <br/>
+                Support : {{ banner.support }}
+              </span>
+            </p>
+          {% endif %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

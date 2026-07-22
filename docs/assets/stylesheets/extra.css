@@ -895,18 +895,17 @@ a.md-source[target=_blank].footer-link::after {
 /* =============== */
 .banner-hover-effect {
   size: 3.5rem !important;
-  transition: opacity 0.3s ease;
+
+  svg {
+    opacity: 1;
+    width: auto;
+    max-height: 3.3rem;
+    transition: opacity 0.3s ease;
+  }
 }
 
-.banner-hover-effect img {
-  width: auto;
-  height: 3.5rem;
-  max-width: auto;
-  transition: transform 0.3s ease;
-}
-
-.banner-hover-effect:hover {
-  opacity: 0.6;
+a.banner-hover-effect[target=_blank]:has(svg)::after {
+  display: none;
 }
 
 .banner-hover-non-effect {
