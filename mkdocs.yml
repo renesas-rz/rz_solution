@@ -57,6 +57,31 @@ extra:
     - link: legal_notices/
       name: Notices & Terms
       new_tab: true
+  pagefind_search:
+    metadata:
+      local_link: ext/
+      outside_link:
+        - link: https://renesas-rz.github.io/rz_linux_bsp_plus/
+          name: Linux BSP Plus
+          weight: 1
+        - link: https://renesas-rz.github.io/rz_verified_linux_package/
+          name: VLP
+          weight: 0.5
+        - link: https://renesas-rz.github.io/rz_linux_distros/
+          name: Ubuntu/Debian
+          weight: 0.8
+        - link: https://renesas-rz.github.io/rzg_hmi_sdk/
+          name: HMI SDK
+          weight: 1
+        - link: https://renesas-rz.github.io/rzv_ai_sdk/
+          name: AI SDK
+          weight: 1
+        - link: https://renesas-rz.github.io/rz-ethos-u-docs/
+          name: RZ/G3E Ethos-U
+          weight: 0.3
+        - link: https://renesas-rz.github.io/rz_aosp/
+          name: RZ AOSP
+          weight: 1
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/renesas-rz
@@ -72,10 +97,15 @@ extra:
 
 extra_css:
   - assets/stylesheets/extra.css
+  - pagefind/pagefind-ui.css
+  - assets/stylesheets/pagefind_search.css
 
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - assets/javascripts/tablesort.js
+  - pagefind/pagefind-ui.js
+  - https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js
+  - assets/javascripts/pagefind_search.js
 
 markdown_extensions:
   - admonition
@@ -108,17 +138,20 @@ markdown_extensions:
 
 plugins:
   # search must be in the top one
-  - search
+  # replace with pagefind_search
+  - search:
+      enabled: false
   - exclude:
       glob:
         - _*
         # - guidelines/_*/*
         - guidelines/*
-        - download/_*/*
-        - history/_*/*
+        - history/*
         - home/_*
         - home/*.md
         - knowledge_base/_*/*
+        - legal_notices/_*/*
+        - policy/_*/*
   - glightbox
   - include-markdown
   # - mkdocs-video
@@ -134,11 +167,14 @@ plugins:
       cache_safe: true
       js_files:
           - assets/javascripts/tablesort.js
+          - assets/javascripts/pagefind_search.js
       css_files:
           - assets/stylesheets/extra.css
+          - assets/stylesheets/pagefind_search.css
   - table-reader
   # macros must be in the bottom one
   - macros
 
 hooks:
-  - mkdocs_event_hook.py
+  - hooks/mkdocs_event_hook.py
+  - hooks/pagefind_search.py

@@ -1,6 +1,6 @@
 {#-
   Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
-  Copyright (c) 2024-2025 Renesas Electronics Corporation and/or its affiliates
+  Copyright (c) 2024-2026 Renesas Electronics Corporation and/or its affiliates
   SPDX-License-Identifier: MIT
 
   This code was originally taken from
@@ -85,7 +85,11 @@
         {% set icon = config.theme.icon.search or "material/magnify" %}
         {% include ".icons/" ~ icon ~ ".svg" %}
       </label>
-      {% include "partials/search.html" %}
+      {% if config.extra.pagefind_search %}
+        {% include "pagefind_search.html" %}
+      {% else %}
+        {% include "partials/search.html" %}
+      {% endif %}
     {% endif %}
     {% if config.repo_url %}
       <div class="md-header__source">

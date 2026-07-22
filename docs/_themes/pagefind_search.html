@@ -1,0 +1,36 @@
+<div class="md-search" role="dialog">
+  <!-- Mount Pagefind in the Native Search Bar Container -->
+  <label class="md-search__overlay" for="__search"></label>
+
+  <div class="md-search__inner" aria-label="Search">
+    <div id="__my_back_search">
+      <button>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path>
+        </svg>
+      </button>
+    </div>
+    <div id="pagefind_search" class="pagefind-ui"></div>
+  </div>
+
+  <!-- Parse Data to Pagefind -->
+  <script>
+    {% if config.extra.pagefind_search is defined %}
+
+      var search_link = [];
+      var local_base = '';
+
+      {% if config.extra.pagefind_search.metadata.local_link is defined %}
+        const local = window.location.href.replace(/\#.*/g, "").replace(/\?.*/g, "") + "{{ config.extra.pagefind_search.metadata.local_link | url }}";
+        local_base = local;
+      {% endif %}
+
+      // Converts your Python/Jinja list directly into a valid JavaScript array
+      {% if config.extra.pagefind_search.metadata.outside_link is defined %}
+        const outside = {{ config.extra.pagefind_search.metadata.outside_link }};
+        search_link = search_link.concat(outside);
+      {% endif %}
+
+    {% endif %}
+  </script>
+</div>
