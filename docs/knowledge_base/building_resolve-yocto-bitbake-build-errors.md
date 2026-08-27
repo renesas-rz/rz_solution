@@ -5,7 +5,7 @@ inline_toc: true
 # How to resolve Yocto Bitbake build errors
 
 !!! abstract "Page Information"
-    Last updated: ***July 27, 2026***
+    Last updated: ***August 27, 2026***
 
 {% if inline_toc %}
 !!! content-wrapper no-indent inline-toc ""
@@ -101,3 +101,20 @@ For more detailed information, refer to the following links.
     * [PARALLEL_MAKE](https://docs.yoctoproject.org/3.1/ref-manual/ref-manual.html#var-PARALLEL_MAKE){: target=_blank }
 
     See also [Speeding Up a Build](https://docs.yoctoproject.org/3.1/dev-manual/dev-manual.html#speeding-up-a-build){: target=_blank }.
+
+### Build error due to incompatible tar version
+
+BitBake may fail with the following error message:
+
+```
+tar: Exiting with failure status due to previous errors
+```
+
+This issue may be related to the version of the tar package installed on the Ubuntu host PC.
+Certain combinations of tar and BitBake may trigger this error during the build process.
+Please downgrade tar using the following command and then run BitBake again.
+
+``` bash
+sudo apt install tar=1.34+dfsg-1build3
+```
+{: .dollar }
