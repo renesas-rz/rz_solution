@@ -13,3 +13,6 @@
         *   VLPv4(Kernel6.1): RZ/G2L, RZ/G2LC, RZ/G2UL, RZ/G3S
         *   VLPv5(Kernel6.12): RZ/T2H, RZ/N2H[↩](#tfref:1){: .tf-backref }
     {: #tf:1 }
+
+    2.  Coming in 2026/4Q.[↩](#tfref:2){: .tf-backref }
+    {: #tf:2 }

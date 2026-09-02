@@ -14,6 +14,10 @@ document$.subscribe(function() {
       li.addEventListener('click', event => {
         a.click();
       });
+
+      a.addEventListener('click', async (e) => {
+        e.stopPropagation(); // Stops the click from hitting the parent container
+      });
     });
   }
 
