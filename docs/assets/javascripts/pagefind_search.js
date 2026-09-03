@@ -435,4 +435,16 @@ document$.subscribe(function() {
     // DOMContentLoaded has already fired, run right away
     mark();
   }
+
+  // load pagefind database at first time --------------------------------------
+
+  window.addEventListener('DOMContentLoaded', async () => {
+    const searchQuery = "renesas rz";
+
+    // Import the Pagefind API library
+    const pagefind = await import(window.location.href.replace(/\#.*/g, "").replace(/\?.*/g, "") + "./pagefind/pagefind.js");
+
+    // Run the search immediately on load
+    const searchResults = await pagefind.search(searchQuery);
+  });
 })
