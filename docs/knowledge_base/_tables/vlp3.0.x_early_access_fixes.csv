@@ -1,2 +1,6 @@
 Target Version,Commit ID,Description,Issued Date,Update Date
-VLP v3.0.7-update5 and older,4c8a279,Upgrade Debian packages due to Fetch Error,2026-07-27,-
+VLP v3.0.7-update5 and older,96b0e35,Update pseudo package due to Fetch Error,2026-09-08,-
+VLP v3.0.7-update5 and older,fd8dd78,Upgrade glibc package due to Fetch Error,2026-09-08,-
+VLP v3.0.7-update5 and older,de4088e,Update wlconf package due to Build Failure,2026-09-08,-
+VLP v3.0.7-update5 and older,f6d33cc,Upgrade OpenSSL package due to Fetch Error,2026-09-08,-
+VLP v3.0.7-update5 and older,4c8a279,Upgrade OpenSSH package due to Fetch Error,2026-07-27,-

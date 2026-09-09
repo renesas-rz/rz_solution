@@ -5,7 +5,7 @@ inline_toc: true
 # Early Access Fixes for VLP
 
 !!! abstract "Page Information"
-    Last updated: ***July 27, 2026***
+    Last updated: ***September 8, 2026***
 
 {% if inline_toc %}
 !!! content-wrapper no-indent inline-toc ""
