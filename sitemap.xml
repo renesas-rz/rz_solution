@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://renesas-rz.github.io/rz_solution/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://renesas-rz.github.io/rz_solution/knowledge_base/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://renesas-rz.github.io/rz_solution/knowledge_base/building_resolve-yocto-bitbake-build-errors/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://renesas-rz.github.io/rz_solution/knowledge_base/early_access_fixes/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://renesas-rz.github.io/rz_solution/knowledge_base/related-resources_and_external-links/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://renesas-rz.github.io/rz_solution/legal_notices/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://renesas-rz.github.io/rz_solution/policy/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+</urlset>
