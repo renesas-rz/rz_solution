@@ -13,7 +13,7 @@ nav:
   - Knowledge Base: knowledge_base/index.md
 
 theme:
-  name: material
+  name: materialx
   custom_dir: docs/_themes
   favicon: assets/icons/6723.T.png
   features:
@@ -38,6 +38,7 @@ theme:
   #   btn:
   #     name: Get the Board
   #     url: download/
+  topbar_style: primary
   palette:
     primary: custom
 
@@ -97,6 +98,7 @@ extra:
 
 extra_css:
   - assets/stylesheets/extra.css
+  - assets/stylesheets/extra-materialx.css
   - pagefind/pagefind-ui.css
   - assets/stylesheets/pagefind_search.css
   - assets/stylesheets/toc.css
@@ -179,6 +181,7 @@ plugins:
           - assets/javascripts/banner.js
       css_files:
           - assets/stylesheets/extra.css
+          - assets/stylesheets/extra-materialx.css
           - assets/stylesheets/pagefind_search.css
           - assets/stylesheets/toc.css
           - assets/stylesheets/banner.css

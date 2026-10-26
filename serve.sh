@@ -15,4 +15,4 @@ address=$ip:$port
 
 echo "will serving on http://$address ..."
 
-mkdocs serve -a $address
+properdocs serve -a $address

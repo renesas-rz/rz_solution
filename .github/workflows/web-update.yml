@@ -28,10 +28,10 @@ jobs:
 
       - uses: actions/cache@v4
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-materialx-${{ env.cache_id }}
           path: .cache
           restore-keys: |
-            mkdocs-material-
+            mkdocs-materialx-
 
       - name: Setup Environments
         run: |
@@ -40,4 +40,4 @@ jobs:
       - name: Compile Documentations and Deploy
         run: |
           export GOOGLE_ANALYTICS_KEY=$(cat g-analytics-key.txt)
-          mkdocs gh-deploy --force
+          properdocs gh-deploy --force

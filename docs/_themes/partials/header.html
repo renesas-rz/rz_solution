@@ -7,6 +7,11 @@
     https://github.com/squidfunk/mkdocs-material/blob/master/material/templates/partials/header.html
   and have sources in
     https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/partials/header.html
+
+  Part of this code was originally taken from
+    https://github.com/jaywhj/mkdocs-materialx/blob/main/material/templates/partials/header.html
+  and have sources in
+    https://github.com/jaywhj/mkdocs-materialx/blob/main/src/templates/partials/header.html
 -#}
 
 {% set class = "md-header" %}
@@ -80,15 +85,18 @@
     {% if config.extra.alternate %}
       {% include "partials/alternate.html" %}
     {% endif %}
-    {% if "material/search" in config.plugins %}
-      <label class="md-header__button md-icon" for="__search">
-        {% set icon = config.theme.icon.search or "material/magnify" %}
-        {% include ".icons/" ~ icon ~ ".svg" %}
-      </label>
-      {% if config.extra.pagefind_search %}
-        {% include "pagefind_search.html" %}
-      {% else %}
-        {% include "partials/search.html" %}
+    {% if config.extra.pagefind_search %}
+      {% include "pagefind_search.html" %}
+    {% else %}
+      {% if "materialx/search" in config.plugins %}
+        {% set search = config.plugins["materialx/search"] | attr("config") %}
+        {% if search %}
+          <label class="md-header__button md-icon" for="__search">
+            {% set icon = config.theme.icon.search or "octicons/search-24" %}
+           {% include ".icons/" ~ icon ~ ".svg" %}
+          </label>
+          {% include "partials/search.html" %}
+        {% endif %}
       {% endif %}
     {% endif %}
     {% if config.repo_url %}
