@@ -178,15 +178,21 @@ document$.subscribe(function() {
     var target_links = [];
 
     search_link.forEach(async (link) => {
-      const _link = link.link + 'pagefind/'
-      const exist = await checkLinkExists(_link + 'pagefind.js');
+      var _link = link.link + 'search/'
+      var exist = await checkLinkExists(_link + 'pagefind.js');
       if (exist) {
-        target_links.push({bundlePath: _link, indexWeight: link.weight});
+        target_links.push({baseUrl: _link, bundlePath: _link, indexWeight: link.weight});
       } else {
-        const _local_link = _link.replace('https://renesas-rz.github.io/', local_base);
-        const local_exist = await checkLinkExists(_local_link + 'pagefind.js');
-        if (local_exist) {
-          target_links.push({bundlePath: _local_link, indexWeight: link.weight});
+        _link = link.link + 'pagefind/';
+        exist = await checkLinkExists(_link + 'pagefind.js');
+        if (exist) {
+          target_links.push({baseUrl: _link, bundlePath: _link, indexWeight: link.weight});
+        } else {
+          const _local_link = _link.replace('https://renesas-rz.github.io/', local_base);
+          const local_exist = await checkLinkExists(_local_link + 'pagefind.js');
+          if (local_exist) {
+            target_links.push({bundlePath: _local_link, indexWeight: link.weight});
+          }
         }
       }
     });
@@ -252,6 +258,8 @@ document$.subscribe(function() {
         // revert to original links
         if (link.href.includes(_local_base)) {
           link.href = link.href.replace(_local_base, 'https://renesas-rz.github.io/');
+        } else {
+          link.href = link.href.replace('/search', '');
         }
 
         // Modify link to add target and title

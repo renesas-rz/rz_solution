@@ -168,7 +168,10 @@ def do_tmp(is_move, out_path, tmp_area):
     if is_move:
         os.rename(out_path + "/pagefind", tmp_area + "/pagefind")
     else:
-        os.system("cp -a " + out_path + "/pagefind " + tmp_area + "/pagefind")
+        if os.path.isdir(out_path + "/pagefind"):
+            os.system("cp -a " + out_path + "/pagefind " + tmp_area + "/pagefind")
+        else:
+            os.system("cp -a " + out_path + "/search " + tmp_area + "/pagefind")
 
 def check_tmp(tmp_area):
     res = True
@@ -261,7 +264,7 @@ def generate_metadata(this_site, local_link, outside_link, site_dir):
                 git_cleanup(out_path)
                 do_tmp(True, out_path + "/site", tmp_area)
             else:
-                if os.path.isdir(out_path + "/pagefind"):
+                if os.path.isdir(out_path + "/pagefind") or os.path.isfile(out_path + "/search/pagefind.js"):
                     log.debug("`" + repo_name + "` - Pagefind Exist! Copying...")
                     do_tmp(False, out_path, tmp_area)
                 else:
