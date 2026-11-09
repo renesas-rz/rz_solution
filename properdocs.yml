@@ -74,6 +74,13 @@ extra:
         - link: https://renesas-rz.github.io/rzg_hmi_sdk/
           name: HMI SDK
           weight: 1
+          lunjr:
+            - v1.00
+            - v2.3.0.0
+            - v2.3.1.0
+            - v3.4.0.0
+            - v3.4.1.0
+            - v3.5.0.0
         - link: https://renesas-rz.github.io/rzv_ai_sdk/
           name: AI SDK
           weight: 1

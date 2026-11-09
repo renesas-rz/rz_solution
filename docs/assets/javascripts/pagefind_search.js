@@ -111,6 +111,36 @@ document$.subscribe(function() {
     }
   }
 
+  function insertHighlightQuery_v2(link, markedText, keyword) {
+    // Highlight for MkDocs Material bases sites
+    if (link.href.includes("?h=")) {
+      // do nothing
+    } else {
+      const _keyword = markedText;
+      var _uniqueKeyword = "";
+      var _added = [];
+      const _link = link.href.split("#");
+      _keyword.forEach(_key => {
+        const __candidate = trimNonAlphanumeric(_key.textContent.toLowerCase());
+        if (!_added.includes(__candidate) && _key !== "") {
+          _uniqueKeyword += __candidate + " ";
+          _added.push(__candidate);
+        }
+      });
+      if (_keyword.length > 0) {
+        link.href = _link[0] + "?h=" + _uniqueKeyword.split(' ').sort((a, b) => b.length - a.length).join('&h=');
+      } else {
+        link.href = _link[0] + "?h=" + trimNonAlphanumeric(keyword.toLowerCase());
+      }
+      if (link.href.slice(-3) == "&h=") {
+        link.href = link.href.slice(0, -3);
+      }
+      if (_link.length > 1) {
+        link.href += "#" + _link[1];
+      }
+    }
+  }
+
   function setTargetLinkAndTitle(link, search_link, __markedText) {
     // legal notices page is special case
     if (link.href.includes("legal_notices")) {
@@ -174,6 +204,9 @@ document$.subscribe(function() {
 
   // common search -------------------------------------------------------------
 
+  var lunjr = {};
+  var rzg_hmi_sdk_lunjr = [];
+
   window.addEventListener('DOMContentLoaded', (event) => {
     var target_links = [];
 
@@ -194,6 +227,10 @@ document$.subscribe(function() {
             target_links.push({bundlePath: _local_link, indexWeight: link.weight});
           }
         }
+      }
+      if (link.link.includes('/rzg_hmi_sdk')) {
+        rzg_hmi_sdk_lunjr = link.lunjr;
+        lunjr.rzg_hmi_sdk = rzg_hmi_sdk_lunjr;
       }
     });
 
@@ -253,7 +290,24 @@ document$.subscribe(function() {
 
         // Add serach keyword to link
         insertTextKeyword(link, markedTextwithPrefix, keyword);
-        insertHighlightQuery(link, !!__markedText ? __markedText : markedText, keyword);
+        if (link.href.includes('/search')) {
+          insertHighlightQuery_v2(link, !!__markedText ? __markedText : markedText, keyword);
+      } else if (link.href.includes('/rzg_hmi_sdk')) {
+          var matches = false;
+          lunjr.rzg_hmi_sdk.forEach(version => {
+            if (link.href.includes(version) && !matches) {
+              matches = true;
+            }
+          })
+          if (matches) {
+            insertHighlightQuery(link, !!__markedText ? __markedText : markedText, keyword);
+          } else {
+            /* newer engine -> pagefind */
+            insertHighlightQuery_v2(link, !!__markedText ? __markedText : markedText, keyword);
+          }
+        } else {
+          insertHighlightQuery(link, !!__markedText ? __markedText : markedText, keyword);
+        }
 
         // revert to original links
         if (link.href.includes(_local_base)) {
@@ -384,7 +438,7 @@ document$.subscribe(function() {
           }
 
           // Add serach keyword to link
-          insertHighlightQuery(link, !!__markedText ? __markedText : markedText, keyword);
+          insertHighlightQuery_v2(link, !!__markedText ? __markedText : markedText, keyword);
 
           // Prevent duplication
           setLinkListener(link);
