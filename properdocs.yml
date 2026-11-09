@@ -152,14 +152,11 @@ plugins:
   - exclude:
       glob:
         - _*
+        - "*/_*"
         # - guidelines/_*/*
         - guidelines/*
-        - history/*
-        - home/_*
         - home/*.md
-        - knowledge_base/_*/*
-        - legal_notices/_*/*
-        - policy/_*/*
+        - history/*
   - glightbox
   - include-markdown
   # - mkdocs-video
