@@ -1,17 +1,16 @@
 ---
 knowledge_base_search: true
+page_title: Knowledge Base
 ---
-
-# Knowledge Base
-
-This Knowledge Base provides common technical information and troubleshooting tips shared across Linux solutions for RZ MPUs.
 
 {% if knowledge_base_search %}
 {# Don't modify this area #}
 {% include "./_components/__search.html" %}
+{% else %}
+# {{ page_title }}
 {% endif %}
 
----
+This Knowledge Base provides common technical information and troubleshooting tips shared across Linux solutions for RZ MPUs.
 
 * :star2: [Early Access Fixes for VLP](./early_access_fixes.md)
 * [How to resolve Yocto Bitbake build errors](./building_resolve-yocto-bitbake-build-errors.md)

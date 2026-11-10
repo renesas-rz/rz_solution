@@ -188,6 +188,39 @@ document$.subscribe(function() {
 
   function setResultAreaListener(result) {
     const link = result.querySelector('.pagefind-ui__result-link');
+    const page_title = result.querySelector('.pagefind-ui__result-title');
+
+    page_title.addEventListener('click', async (event) => {
+      if (!!link) {
+        if (!result.hasAttribute('data-li-clicked')) {
+          link.click();
+          result.setAttribute('data-li-clicked', "true");
+          result.classList.add("__visited");
+          await _sleep(500);
+          overlay.click();
+          result.removeAttribute('data-li-clicked');
+        }
+      }
+    });
+
+    const nested_results = result.querySelectorAll('.pagefind-ui__result-nested');
+
+    nested_results.forEach(res => {
+      const nested_link = res.querySelector('.pagefind-ui__result-link');
+      res.addEventListener('click', async (event) => {
+        if (!!nested_link) {
+          if (!result.hasAttribute('data-li-clicked')) {
+            nested_link.click();
+            result.setAttribute('data-li-clicked', "true");
+            result.classList.add("__visited");
+            await _sleep(500);
+            overlay.click();
+            result.removeAttribute('data-li-clicked');
+          }
+        }
+      });
+    });
+
     result.addEventListener('click', async (event) => {
       if (!!link) {
         if (!result.hasAttribute('data-li-clicked')) {

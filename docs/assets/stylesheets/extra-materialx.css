@@ -137,47 +137,6 @@ img:not(.twemoji) {
   border: .01rem solid rgba(0, 0, 0, 0.12);
 }
 
-input.pagefind-ui__search-input {
-  background: inherit !important;
-  border: 1px solid white !important;
-  color: white !important;
-  font-size: large !important;
-  font-weight: 500 !important;
-
-  transition: background .15s;
-
-  &::placeholder {
-    color: white !important;
-    opacity: 1;
-  }
-}
-
-.pagefind-ui__form:before {
-  background-color: white !important;
-  width: .7rem !important;
-  height: .7rem !important;
-  left: .6rem !important;
-}
-
-.pagefind-ui__search-clear {
-  background-color: inherit !important;
-}
-
-[data-md-toggle=search]:checked~.md-header #pagefind_search {
-  input.pagefind-ui__search-input {
-    background: white !important;
-    color: black !important;
-  }
-
-  .pagefind-ui__form:before {
-    background-color: black !important;
-  }
-
-  .pagefind-ui__search-clear {
-    background-color: white !important;
-  }
-}
-
 .grid.cards > ul > li .custom-bg {
   height: 14em !important;
 }
