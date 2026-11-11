@@ -24,9 +24,9 @@
 
 #__my_back_search {
   display: none;
-  width: 2.7rem;
-  height: 1.7rem;
-  margin: 0.3rem 0.3rem 0.3rem 0.6rem;
+  width: 1.7rem;
+  height: 1.55rem;
+  margin: .4rem .3rem .3rem .6rem;
   text-align: center;
   float: left;
   transition: width .25s cubic-bezier(.1, .7, .1, 1);
@@ -88,7 +88,7 @@
   }
 
   .pagefind-ui__results-area {
-    max-height: calc(100vh - 3.3rem) !important;
+    max-height: calc(100svh - 3.3rem) !important;
   }
 }
 
@@ -142,7 +142,10 @@
 }
 
 .pagefind-ui__form:before {
-  top: 0.6rem !important;
+  top: .4rem !important;
+  left: .6rem !important;
+  width: 1rem !important;
+  height: 1rem !important;
   z-index: 1 !important;
   mask-image: var(--md-search-icon) !important;
   -webkit-mask-image: var(--md-search-icon) !important;
@@ -365,6 +368,7 @@
   font-size: .64rem !important;
   font-weight: normal !important;
   line-height: 1.8rem;
+  font-size: .9rem;
 
   &::placeholder {
     color: var(--md-default-fg-color--light) !important;
@@ -377,7 +381,7 @@
 }
 
 #kb_search .pagefind-ui__form:before {
-  top: 0.5rem !important;
+  /* top: 0.5rem !important; */
 }
 
 #kb_search .focus-visible {
@@ -391,6 +395,12 @@
   }
 }
 
+@media screen and (max-width: 29.9844em) {
+  [data-md-toggle=search]:checked~.md-header .md-search__overlay {
+    transform: scale(55) !important;
+  }
+}
+
 /* move out from extra-material.css */
 
 #pagefind_search {
@@ -398,21 +408,21 @@
     background: inherit !important;
     box-shadow: 0 0 0 .05rem var(--mx-search-outline);
     color: white !important;
-    font-size: .64rem !important;
+    font-size: .76rem !important;
     font-weight: normal !important;
     line-height: 1.8rem;
 
     transition: background .15s;
 
     &::placeholder {
-      color: white !important;
+      color: rgba(255,255,255,0.5) !important;
       opacity: 1;
     }
   }
 
   .pagefind-ui__form:before {
     background-color: white !important;
-    top: 0.5rem !important;
+    /* top: 0.5rem !important; */
   }
 
   .pagefind-ui__search-clear {
@@ -432,5 +442,20 @@
 
   .pagefind-ui__search-clear {
     background-color: white !important;
+  }
+}
+
+@media screen and (max-width: 59.984375em) {
+  #pagefind_search {
+    input.pagefind-ui__search-input {
+      font-size: .9rem !important;
+      font-weight: normal !important;
+      line-height: 1.8rem;
+
+      &::placeholder {
+        color: rgba(0,0,0,0.5) !important;
+        opacity: 1;
+      }
+    }
   }
 }

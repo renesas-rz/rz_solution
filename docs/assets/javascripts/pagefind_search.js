@@ -235,6 +235,33 @@ document$.subscribe(function() {
     });
   }
 
+  function enableSwipe() {
+    // Target the Pagefind UI container or drawer element
+    const drawer = document.querySelector('.pagefind-ui__results-area');
+
+    if (drawer) {
+      let touchStartY = 0;
+      let touchEndY = 0;
+      drawer.addEventListener('touchstart', (e) => {
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      drawer.addEventListener('touchend', (e) => {
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        const swipeDistance = touchEndY - touchStartY;
+
+        drawer.scrollBy({
+          top: swipeDistance *-3,
+          behavior: 'smooth' // 'smooth' for smooth transitions, 'auto' for instant jumps
+        });
+      }
+    }
+  }
+
   // common search -------------------------------------------------------------
 
   var lunjr = {};
@@ -325,7 +352,7 @@ document$.subscribe(function() {
         insertTextKeyword(link, markedTextwithPrefix, keyword);
         if (link.href.includes('/search')) {
           insertHighlightQuery_v2(link, !!__markedText ? __markedText : markedText, keyword);
-      } else if (link.href.includes('/rzg_hmi_sdk')) {
+        } else if (link.href.includes('/rzg_hmi_sdk')) {
           var matches = false;
           lunjr.rzg_hmi_sdk.forEach(version => {
             if (link.href.includes(version) && !matches) {
@@ -370,11 +397,12 @@ document$.subscribe(function() {
         clearBtn.classList.add("pagefind-ui__suppressed");
       }
 
-      const unHideResults = () => {
+      const unHideResults = async () => {
         searchToggle.checked = true;
         searchResultsContainer.style.cssText = '';
 
         if (clearBtn.classList.contains('pagefind-ui__suppressed') && keyword.length > 0) {
+          await _sleep(250);
           clearBtn.classList.remove("pagefind-ui__suppressed");
         }
       }
@@ -400,6 +428,7 @@ document$.subscribe(function() {
 
       myLabel.addEventListener('pointerdown', (event) => {
         event.preventDefault();
+        document.body.setAttribute('data-md-scrolllock', 'true');
         unHideResults();
       });
 
@@ -424,6 +453,9 @@ document$.subscribe(function() {
           hideResults();
         }
       });
+
+      // work-around to support (fake) swipe on mobile site
+      enableSwipe();
     });
 
     // Observe changes inside the search container to capture dynamic results
