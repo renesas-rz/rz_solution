@@ -73,7 +73,7 @@ extra:
           weight: 0.8
         - link: https://renesas-rz.github.io/rzg_hmi_sdk/
           name: HMI SDK
-          weight: 1
+          versioned: 1
           lunjr:
             - v1.00
             - v2.3.0.0
@@ -81,14 +81,22 @@ extra:
             - v3.4.0.0
             - v3.4.1.0
             - v3.5.0.0
+          weight: 1
         - link: https://renesas-rz.github.io/rzv_ai_sdk/
           name: AI SDK
+          versioned: 1
           weight: 1
         - link: https://renesas-rz.github.io/rz-ethos-u-docs/
           name: RZ/G3E Ethos-U
           weight: 0.3
         - link: https://renesas-rz.github.io/rz_aosp/
           name: RZ AOSP
+          versioned: 1
+          lunjr:
+            - v15.3.0
+            - v15.3.1
+            - v17.0.0
+            - v17.0.1
           weight: 1
   social:
     - icon: fontawesome/brands/github

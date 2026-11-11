@@ -154,7 +154,13 @@ document$.subscribe(function() {
           link.rel = "noopener noreferrer"; // Good security practice for new tabs
 
           let _title = "";
-          if (link.href.includes("rzv_ai_sdk") || link.href.includes("rzg_hmi_sdk")) {
+          var matches = false;
+          has_versions.forEach(site => {
+            if (link.href.includes(site) && !matches) {
+              matches = true;
+            }
+          });
+          if (matches) {
             const _ver = link.href.replace(base.link,'').replace(/\/.*/g, "");
             _title = base.name + " (" + _ver + ")";
           } else {
@@ -265,13 +271,14 @@ document$.subscribe(function() {
   // common search -------------------------------------------------------------
 
   var lunjr = {};
-  var rzg_hmi_sdk_lunjr = [];
+
+  var has_versions = [];
 
   window.addEventListener('DOMContentLoaded', (event) => {
     var target_links = [];
 
     search_link.forEach(async (link) => {
-      var _link = link.link + 'search/'
+      var _link = link.link + 'search/';
       var exist = await checkLinkExists(_link + 'pagefind.js');
       if (exist) {
         target_links.push({baseUrl: _link, bundlePath: _link, indexWeight: link.weight});
@@ -288,9 +295,12 @@ document$.subscribe(function() {
           }
         }
       }
-      if (link.link.includes('/rzg_hmi_sdk')) {
-        rzg_hmi_sdk_lunjr = link.lunjr;
-        lunjr.rzg_hmi_sdk = rzg_hmi_sdk_lunjr;
+      if (link.versioned) {
+        const site = link.link.replace('https://renesas-rz.github.io/', '').replace('/', '');
+        if (link.lunjr) {
+          lunjr[site] = link.lunjr;
+        }
+        has_versions.push(site);
       }
     });
 
@@ -350,11 +360,21 @@ document$.subscribe(function() {
 
         // Add serach keyword to link
         insertTextKeyword(link, markedTextwithPrefix, keyword);
+
+        // revert to original links
+        if (link.href.includes(_local_base)) {
+          link.href = link.href.replace(_local_base, 'https://renesas-rz.github.io/');
+        }
+
+        // Update title
+        const _lunjr = link.href.replace('https://renesas-rz.github.io/', '').replace(/\/.*/g, '');
         if (link.href.includes('/search')) {
+          // remove /search from base link
+          link.href = link.href.replace('/search', '');
           insertHighlightQuery_v2(link, !!__markedText ? __markedText : markedText, keyword);
-        } else if (link.href.includes('/rzg_hmi_sdk')) {
+        } else if (!!lunjr[_lunjr] && link.href.includes(_lunjr)) {
           var matches = false;
-          lunjr.rzg_hmi_sdk.forEach(version => {
+          lunjr[_lunjr].forEach(version => {
             if (link.href.includes(version) && !matches) {
               matches = true;
             }
@@ -367,13 +387,6 @@ document$.subscribe(function() {
           }
         } else {
           insertHighlightQuery(link, !!__markedText ? __markedText : markedText, keyword);
-        }
-
-        // revert to original links
-        if (link.href.includes(_local_base)) {
-          link.href = link.href.replace(_local_base, 'https://renesas-rz.github.io/');
-        } else {
-          link.href = link.href.replace('/search', '');
         }
 
         // Modify link to add target and title
