@@ -20,7 +20,7 @@ if [[ $_pip3 -ne 1 ]]; then
 
     # pip3 exist as pip
     if [[ $_pip3 -eq 1 ]]; then
-      pip install $pip_packages
+      pip install $pip_packages --upgrade
 
     # pip is not pip3
     else
@@ -34,5 +34,5 @@ if [[ $_pip3 -ne 1 ]]; then
 
 # pip3 exist
 else
-  pip3 install $pip_packages
+  pip3 install $pip_packages --upgrade
 fi

@@ -90,16 +90,36 @@ def do_pagefind(target, exclude_files):
 
     do_weighting(target)
 
-    command = "work/pagefind --source " + target
+    command = "python -m pagefind --source " + target
     do_subprocess(command)
 
-def pagefine_excludes():
+def pagefind_excludes():
     return [
         # all
         "404.html", "_components", "guidelines",
         # ai sdk
         "eSD_format_sd.html", "RZV2L_board_setup_e2studio.html", "version.html"
     ]
+
+def check_target_site_pagefind_version(out_path):
+    import json
+
+    json_path = ""
+
+    if os.path.isdir(out_path + "/pagefind"):
+        json_path = out_path + "/pagefind/pagefind-entry.json"
+    else:
+        json_path = out_path + "/search/pagefind-entry.json"
+
+    with open(json_path, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    version = do_subprocess("python -m pagefind --version").stdout
+
+    if data['version'] in version:
+        return True
+    else:
+        return False
 
 # ------------------------------------------------------------------------------
 
@@ -212,7 +232,7 @@ def generate_metadata(this_site, local_link, outside_link, site_dir):
     # this site
     log.debug("`" + this_site + "` - Starting...")
 
-    do_pagefind(site_dir, pagefine_excludes())
+    do_pagefind(site_dir, pagefind_excludes())
     do_pagefind(site_dir + "/knowledge_base", [])
 
     log.debug("`" + this_site + "` - Completed")
@@ -260,16 +280,23 @@ def generate_metadata(this_site, local_link, outside_link, site_dir):
                 log.debug("`" + repo_name + "` - Compiling...")
                 do_build(out_path)
                 log.debug("`" + repo_name + "` - Pagefinding...")
-                do_pagefind(out_path + "/site", pagefine_excludes())
+                do_pagefind(out_path + "/site", pagefind_excludes())
                 git_cleanup(out_path)
                 do_tmp(True, out_path + "/site", tmp_area)
             else:
                 if os.path.isdir(out_path + "/pagefind") or os.path.isfile(out_path + "/search/pagefind.js"):
-                    log.debug("`" + repo_name + "` - Pagefind Exist! Copying...")
-                    do_tmp(False, out_path, tmp_area)
+                    if check_target_site_pagefind_version(out_path):
+                        log.debug("`" + repo_name + "` - Pagefind Exist! Copying...")
+                        do_tmp(False, out_path, tmp_area)
+                    else:
+                        log.debug("`" + repo_name + "` - Pagefind Exist! But version mismatch")
+                        log.debug("`" + repo_name + "` - Pagefinding...")
+                        do_pagefind(out_path, pagefind_excludes())
+                        git_cleanup(out_path)
+                        do_tmp(True, out_path, tmp_area)
                 else:
                     log.debug("`" + repo_name + "` - Pagefinding...")
-                    do_pagefind(out_path, pagefine_excludes())
+                    do_pagefind(out_path, pagefind_excludes())
                     git_cleanup(out_path)
                     do_tmp(True, out_path, tmp_area)
         else:

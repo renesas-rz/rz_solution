@@ -11,6 +11,22 @@ document$.subscribe(function() {
     }
   }
 
+  async function getJsonData(url) {
+    try {
+      const response = await fetch(url);
+
+      // Check if the request succeeded (status 200-299)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      return null
+    }
+  }
+
   function cleanPathSimple(path) {
     return path
       .split('/')
@@ -274,20 +290,27 @@ document$.subscribe(function() {
 
   var has_versions = [];
 
-  window.addEventListener('DOMContentLoaded', (event) => {
+  window.addEventListener('DOMContentLoaded', async (event) => {
     var target_links = [];
 
+    var _local_entry = await getJsonData(local_base.replace('ext/', '') + "pagefind/pagefind-entry.json");
+
     search_link.forEach(async (link) => {
+      // makesure target site has their own materialx pagefind index (target url /search)
       var _link = link.link + 'search/';
       var exist = await checkLinkExists(_link + 'pagefind.js');
-      if (exist) {
+      var entry = await getJsonData(_link + "pagefind-entry.json");
+      if (exist && !!entry && _local_entry['version'] == entry['version']) {
         target_links.push({baseUrl: _link, bundlePath: _link, indexWeight: link.weight});
       } else {
+        // makesure target site has their own custom pagefind index (target url /pagefind)
         _link = link.link + 'pagefind/';
         exist = await checkLinkExists(_link + 'pagefind.js');
-        if (exist) {
+        entry = await getJsonData(_link + "pagefind-entry.json");
+        if (exist && !!entry && _local_entry['version'] == entry['version']) {
           target_links.push({baseUrl: _link, bundlePath: _link, indexWeight: link.weight});
         } else {
+          // makesure target site indexed on main site (main url /ext/<target>/pagefind)
           const _local_link = _link.replace('https://renesas-rz.github.io/', local_base);
           const local_exist = await checkLinkExists(_local_link + 'pagefind.js');
           if (local_exist) {
@@ -295,6 +318,7 @@ document$.subscribe(function() {
           }
         }
       }
+
       if (link.versioned) {
         const site = link.link.replace('https://renesas-rz.github.io/', '').replace('/', '');
         if (link.lunjr) {
