@@ -4,21 +4,34 @@ This section collects useful references for RZ MPU platforms, including Renesas-
 
 ### RZ MPU Product Pages
 
+#### RZ/G Series
+
 * [RZ/G2L](https://www.renesas.com/en/products/rz-g2l){: target=_blank } — General-Purpose MPU with Dual-Core Arm Cortex-A55 CPUs with 3D Graphics and Video Codec Engine.
 * [RZ/G2LC](https://www.renesas.com/en/products/rz-g2lc){: target=_blank } — General-Purpose MPUs with Dual-Core Arm Cortex-A55 (1.2GHz) CPUs with 3D Graphics.
 * [RZ/G2UL](https://www.renesas.com/en/products/rz-g2ul){: target=_blank } — General-Purpose Microprocessors with Single-Core Arm Cortex-A55 (1.0GHz) CPU with 2ch Gigabit Ethernet.
 * [RZ/FIVE](https://www.renesas.com/en/products/rz-five){: target=_blank } — General-purpose Microprocessors with RISC-V CPU Core (Andes AX45MP Single) (1.0 GHz) with 2ch Gigabit Ethernet.
 * [RZ/G3S](https://www.renesas.com/en/products/rz-g3s){: target=_blank } — General-Purpose Microprocessors with Single-Core Arm Cortex-A55 (1.1GHz) CPU and Dual-Core Cortex-M33 (250MHz) CPU, Supporting Low-Power Mode and PCI Express.
 * [RZ/G3E](https://www.renesas.com/en/products/rz-g3e){: target=_blank } — General-Purpose MPU with Quad-Core CPU, and NPU for HMI Applications with High-Performance Computing.
+* [RZ/G3L](https://www.renesas.com/en/products/rz-g3l){: target=_blank } — Power-Efficient, Multi-Core Architecture Microprocessor with 3D Graphics Accelerator for HMI.
+* [RZ/G3SE](https://www.renesas.com/en/products/rz-g3se){: target=_blank } — Power-Efficient, Multi-Core Architecture Microprocessor with Advanced Connectivity for IoT Edge.
+
+#### RZ/V Series
+
 * [RZ/V2M](https://www.renesas.com/en/products/rz-v2m){: target=_blank } — AI Accelerator (DRP-AI), 4K-compatible Image Signal Processor (ISP), Vision-AI ASSP for Real-time Human and Object Recognition.
 * [RZ/V2MA](https://www.renesas.com/en/products/rz-v2ma){: target=_blank } — Vision AI MPU With Renesas DRP-AI High-efficiency AI Accelerator and OpenCV Image Processing Accelerator Enabling Real-time Object Recognition.
 * [RZ/V2L](https://www.renesas.com/en/products/rz-v2l){: target=_blank } — General-Purpose Microprocessor Equipped With Renesas' Original AI Accelerator "DRP-AI", 1.2GHz Dual-Core Arm Cortex-A55 CPU, 3D Graphics, and Video Codec Engine.
 * [RZ/V2H](https://www.renesas.com/en/products/rz-v2h){: target=_blank } — Quad-core Vision AI MPU with DRP-AI3 Accelerator and High-Performance Real-time Processor.
 * [RZ/V2N](https://www.renesas.com/en/products/rz-v2n){: target=_blank } — 15TOPS Quad-Core Vision AI MPU with 2-Camera Connection and Excellent Power Efficiency.
+
+#### RZ/T,N Series
+
 * [RZ/T2H](https://www.renesas.com/en/products/rz-t2h){: target=_blank } — Advanced High-End MPU with Integrated Powerful Application Processing and High-Precision Real-Time Control for 9-Axis Motor Control.
+* [RZ/T2N](https://www.renesas.com/en/products/rz-t2n){: target=_blank } — High-Performance MPU with Integrated Application Processing, Real-Time Control for 4-Axis Motor Control, and Industrial Ethernet Redundancy.
 * [RZ/N2H](https://www.renesas.com/en/products/rz-n2h){: target=_blank } — Advanced MPU Delivers High-Performance Application Processing and Real-Time Operation with Industrial Ethernet.
 
 ### Evaluation Board Kits (EVKs)
+
+#### RZ/G Series
 
 * [RZ/G2L Evaluation Board Kit (RZ/G2L-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-g2l-evkit){: target=_blank }
 * [RZ/G2LC Evaluation Board Kit (RZ/G2LC-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-g2lc-evkit){: target=_blank }
@@ -26,12 +39,20 @@ This section collects useful references for RZ MPU platforms, including Renesas-
 * [RZ/Five Evaluation Board Kit (RZ/Five-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-five-evkit){: target=_blank }
 * [RZ/G3S Evaluation Board Kit (RZ/G3S-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-g3s-evkit){: target=_blank }
 * [RZ/G3E Evaluation Board Kit (RZ/G3E-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-g3e-evkit){: target=_blank }
+* [RZ/G3L Evaluation Board Kit (RZ/G3L-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-g3l-evkit){: target=_blank }
+
+#### RZ/V Series
+
 * [RZ/V2M Evaluation Board Kit (RZ/V2M-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-v2m-evkit){: target=_blank }
 * [RZ/V2MA Evaluation Board Kit (RZ/V2MA-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-v2ma-evkit){: target=_blank }
 * [RZ/V2L Evaluation Board Kit (RZ/V2L-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-v2l-evkit){: target=_blank }
 * [RZ/V2H Evaluation Board Kit (RZ/V2H-EVK)](https://www.renesas.com/en/design-resources/boards-kits/rz-v2h-evk){: target=_blank }
 * [RZ/V2N Evaluation Board Kit (RZ/V2N-EVK)](https://www.renesas.com/en/design-resources/boards-kits/rz-v2n-evk){: target=_blank }
+
+#### RZ/T,N Series
+
 * [RZ/T2H Evaluation Board Kit (RZ/T2H-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-t2h-evkit){: target=_blank }
+* [RZ/T2N Evaluation Board Kit (RZ/T2N-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-t2n-evkit){: target=_blank }
 * [RZ/N2H Evaluation Board Kit (RZ/N2H-EVKIT)](https://www.renesas.com/en/design-resources/boards-kits/rz-n2h-evkit){: target=_blank }
 
 ### Renesas RZ Software
