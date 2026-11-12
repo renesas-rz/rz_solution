@@ -298,16 +298,14 @@ document$.subscribe(function() {
     search_link.forEach(async (link) => {
       // makesure target site has their own materialx pagefind index (target url /search)
       var _link = link.link + 'search/';
-      var exist = await checkLinkExists(_link + 'pagefind.js');
       var entry = await getJsonData(_link + "pagefind-entry.json");
-      if (exist && !!entry && _local_entry['version'] == entry['version']) {
+      if (!!entry && _local_entry['version'] == entry['version']) {
         target_links.push({baseUrl: _link, bundlePath: _link, indexWeight: link.weight});
       } else {
         // makesure target site has their own custom pagefind index (target url /pagefind)
         _link = link.link + 'pagefind/';
-        exist = await checkLinkExists(_link + 'pagefind.js');
         entry = await getJsonData(_link + "pagefind-entry.json");
-        if (exist && !!entry && _local_entry['version'] == entry['version']) {
+        if (!!entry && _local_entry['version'] == entry['version']) {
           target_links.push({baseUrl: _link, bundlePath: _link, indexWeight: link.weight});
         } else {
           // makesure target site indexed on main site (main url /ext/<target>/pagefind)
