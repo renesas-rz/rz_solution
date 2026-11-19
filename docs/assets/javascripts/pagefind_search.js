@@ -46,7 +46,8 @@ document$.subscribe(function() {
   }
 
   function trimNonAlphanumeric(str) {
-    return str.replace(/^[^a-z0-9]+|[^a-z0-9]+$/gi, '');
+    // support CJK
+    return str.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '');
   }
 
   function insertTextKeyword(link, markedTextwithPrefix, keyword) {
@@ -158,18 +159,18 @@ document$.subscribe(function() {
   }
 
   function setTargetLinkAndTitle(link, search_link, __markedText) {
-    // legal notices page is special case
-    if (link.href.includes("legal_notices")) {
-      link.target = "_blank";
-      link.rel = "noopener noreferrer"; // Good security practice for new tabs
-    } else if (link.title.length === 0) {
+    if (!link.closest('p').hasAttribute('data-tooltip')) {
+      var __matches = false;
+      let _title = "";
+
       // compare to all base links of others sites
       search_link.forEach(base => {
         if (link.href.includes(base.link)) {
+          __matches = true;
+
           link.target = "_blank";
           link.rel = "noopener noreferrer"; // Good security practice for new tabs
 
-          let _title = "";
           var matches = false;
           has_versions.forEach(site => {
             if (link.href.includes(site) && !matches) {
@@ -177,16 +178,30 @@ document$.subscribe(function() {
             }
           });
           if (matches) {
-            const _ver = link.href.replace(base.link,'').replace(/\/.*/g, "");
-            _title = base.name + " (" + _ver + ")";
+            const _ver = link.href.replace(base.link,'').replace(/\/.*/g, "").toLowerCase().replace('v.', 'v');
+            _title = "[" + base.name + " (" + (_ver[0] == 'v' ? _ver : 'v' + _ver) + ")] ";
           } else {
-            _title = base.name;
+            _title = "[" + base.name + "] ";
           }
+        }
 
-          if (!__markedText) {
-            link.setAttribute('data-before-text', "[" + _title + "] ");
+        // main site
+        if (!__matches) {
+          _title = "[RZ Linux Solutions] ";
+
+          // legal notices page is special case
+          if (link.href.includes("legal_notices")) {
+            link.target = "_blank";
+            link.rel = "noopener noreferrer"; // Good security practice for new tabs
           }
-          link.title = _title;
+        }
+
+        // set title
+        if (!__markedText) {
+          link.setAttribute('data-before-text', _title);
+          link.closest('p').setAttribute('data-tooltip', "Go to '" + _title + link.text + "' page");
+        } else {
+          link.closest('p').setAttribute('data-tooltip', "Go to '" + link.text + "' section");
         }
       });
     }
@@ -284,6 +299,132 @@ document$.subscribe(function() {
     }
   }
 
+  function buttonToRenesasSearch(parent, keyword) {
+    var button = document.querySelector("#renesasSearchBtn");
+
+    if (!button) {
+      button = document.createElement('a');
+      button.id = "renesasSearchBtn";
+
+      button.textContent = '';
+      button.type = 'button';
+      button.target = '_blank';
+
+      button.addEventListener('click', (e) => {
+        overlay.click();
+      });
+
+      parent.appendChild(button);
+    }
+
+    button.setAttribute('data-before-text', 'Or search \'' + keyword + '\' on Renesas.com');
+    button.href = 'https://www.renesas.com/en/search?keywords=' + keyword;
+    if (keyword.length > 0 && keyword !== "") {
+      button.style.display = 'block';
+    } else {
+      button.style.display = 'none';
+    }
+  }
+
+  function typeToSearch(parent, keyword) {
+    const button = document.querySelector("#renesasSearchBtn");
+    var area = document.querySelector("#typeToSearch");
+
+    if (!area) {
+      area = document.createElement('div');
+      area.id = "typeToSearch";
+
+      const text = document.createElement('p');
+      text.textContent = 'Type to start searching';
+      // text.innerHTML = 'Type to start searching. <kbd>↑↓</kbd> navigate, <kbd>↵</kbd> select, <kbd>⌫</kbd> delete, <kbd>esc</kbd> close';
+
+      area.appendChild(text);
+
+      parent.appendChild(area);
+    }
+
+    if (!!button && button.style.display !== 'none' && keyword.length === 0) {
+      area.style.display = 'block';
+    } else {
+      area.style.display = 'none';
+    }
+  }
+
+  function handleKeyboard(searchContainer, esc=false) {
+    searchContainer.addEventListener('keydown', async (e) => {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Enter' && e.key !== 'Backspace' && e.key !== 'Tab' && e.key !== 'Escape') return;
+      if (!esc && e.key === 'Escape') return;
+
+      const input = searchContainer.querySelector('.pagefind-ui__search-input');
+      const renesasSearchBtn = searchContainer.querySelector('#renesasSearchBtn');
+
+      // Select main result links and sub-result links
+      let links = Array.from(
+        searchContainer.querySelectorAll('.pagefind-ui__result-link, .pagefind-ui__result-nested .pagefind-ui__result-link, .pagefind-ui__button, #renesasSearchBtn')
+      );
+      if (!links.length) return;
+
+      const currentIndex = links.indexOf(document.activeElement);
+      if (e.key === 'Enter') {
+        if (!!links[currentIndex] && links[currentIndex].classList.contains("pagefind-ui__button")) {
+          const curLength = links.length;
+          do {
+            await _sleep(100);
+            links = Array.from(
+              searchContainer.querySelectorAll('.pagefind-ui__result-link, .pagefind-ui__result-nested .pagefind-ui__result-link, .pagefind-ui__button, #renesasSearchBtn')
+            );
+          } while(curLength === links.length);
+          links[currentIndex].focus();
+        }
+        // default -> click link / button
+        return;
+      }
+
+      if (e.key === 'Backspace' || e.key === 'Escape') {
+        if (currentIndex >= 0 || document.activeElement === renesasSearchBtn) {
+          input.focus();
+        } else {
+          // default -> delete last characters of search keyword
+          return;
+        }
+      }
+
+      e.preventDefault(); // Prevent cursor movement in input or page scrolling
+      if (e.key === 'ArrowDown') {
+        if (document.activeElement === input || currentIndex === -1) {
+          links[0].focus();
+        } else if (currentIndex < links.length - 1) {
+          links[currentIndex + 1].focus();
+        }
+      } else if (e.key === 'ArrowUp') {
+        if (currentIndex === 0) {
+          input.focus();
+        } else if (currentIndex > 0) {
+          links[currentIndex - 1].focus();
+        }
+      } else if (e.key === 'Tab') {
+        if (document.activeElement === input || currentIndex === -1) {
+          links[0].focus();
+        } else if (document.activeElement === renesasSearchBtn) {
+          input.focus(); // make sure only focus to search container area
+        } else if (currentIndex < links.length - 1) {
+          links[currentIndex + 1].focus();
+        } else {
+          input.focus(); // make sure only focus to search container area
+        }
+      }
+
+      // make mouse hover update/move focus
+      // TODO: fix me, buggy; disabled
+      // links.forEach((item, idx) => {
+      //   item.closest('div').addEventListener('mouseenter', () => {
+      //     item.focus();
+      //     currentIndex = idx;
+      //   });
+      // });
+    });
+  }
+
   // common search -------------------------------------------------------------
 
   var lunjr = {};
@@ -293,7 +434,7 @@ document$.subscribe(function() {
   window.addEventListener('DOMContentLoaded', async (event) => {
     var target_links = [];
 
-    var _local_entry = await getJsonData(local_base.replace('ext/', '') + "pagefind/pagefind-entry.json");
+    var _local_entry = await getJsonData(local_base.replace('ext/', 'pagefind/pagefind-entry.json'));
 
     search_link.forEach(async (link) => {
       // makesure target site has their own materialx pagefind index (target url /search)
@@ -334,6 +475,9 @@ document$.subscribe(function() {
       resetStyles: false, // Prevents Pagefind from overriding Material's default styling
       mergeIndex: target_links,
       indexWeight: 1,
+      translations: {
+        clear_search: "✕"
+      },
     });
   });
 
@@ -352,6 +496,7 @@ document$.subscribe(function() {
     const observer = new MutationObserver(() => {
       // Find all result links generated by Pagefind
       const links = searchContainer.querySelectorAll(".pagefind-ui__result-link");
+      const searchInputEl = document.querySelector(".pagefind-ui__search-input");
       const keyword = document.querySelector(".pagefind-ui__search-input").value;
       const searchResultsContainer = document.querySelector(".pagefind-ui__drawer");
       const searchInput = document.querySelector(".pagefind-ui__form");
@@ -430,15 +575,34 @@ document$.subscribe(function() {
         searchToggle.checked = false;
         searchResultsContainer.style.display = "none";
         clearBtn.classList.add("pagefind-ui__suppressed");
+
+        const area = document.querySelector("#typeToSearch");
+        area.style.display = 'none';
+
+        const button = document.querySelector("#renesasSearchBtn");
+        button.style.display = 'none';
+
+        // work around when still loading search results but esc called
+        button.style.opacity = '0';
       }
 
       const unHideResults = async () => {
         searchToggle.checked = true;
         searchResultsContainer.style.cssText = '';
 
-        if (clearBtn.classList.contains('pagefind-ui__suppressed') && keyword.length > 0) {
+        const _keyword = document.querySelector(".pagefind-ui__search-input").value;
+        const button = document.querySelector("#renesasSearchBtn");
+        const area = document.querySelector("#typeToSearch");
+
+        // work around when still loading search results but esc called
+        button.style.opacity = '1';
+
+        if (clearBtn.classList.contains('pagefind-ui__suppressed') && _keyword.length > 0) {
+          button.style.display = 'block';
           await _sleep(250);
           clearBtn.classList.remove("pagefind-ui__suppressed");
+        } else if (_keyword.length === 0) {
+          area.style.display = 'block';
         }
       }
 
@@ -489,8 +653,50 @@ document$.subscribe(function() {
         }
       });
 
+      searchInputEl.addEventListener('input', (event) => {
+        const value = event.target.value;
+        const area = document.querySelector("#typeToSearch");
+
+        if (value.length === 0) {
+          area.style.display = 'block';
+        }
+      });
+
+      // if we want to keep focus on search box
+      // searchInputEl.addEventListener('keydown', (event) => {
+      //   // Ignore if the event was already handled by another listener
+      //   if (event.defaultPrevented) return;
+      //
+      //   if (event.key === 'Escape') {
+      //     const area = document.querySelector("#typeToSearch");
+      //     area.style.display = 'block';
+      //     searchInputEl.focus();
+      //   }
+      // });
+
+      // if we want to close search box when esc, but kept search results
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          // Check if focus is inside a Pagefind component or modal
+          const isPagefind = event.target.closest(
+            "#pagefind_search"
+          );
+
+          if (isPagefind) {
+            event.stopPropagation();
+            event.preventDefault();
+
+            hideResults();
+            searchInputEl.blur();
+          }
+        }
+      }, { capture: true });
+
       // work-around to support (fake) swipe on mobile site
       enableSwipe();
+
+      buttonToRenesasSearch(searchContainer, keyword);
+      typeToSearch(searchContainer, keyword);
     });
 
     // Observe changes inside the search container to capture dynamic results
@@ -507,6 +713,8 @@ document$.subscribe(function() {
     searchToggle.checked = false;
   });
 
+  handleKeyboard(searchContainer);
+
   // knowledge_base search -----------------------------------------------------
 
   function __search_init() {
@@ -517,7 +725,8 @@ document$.subscribe(function() {
       pageSize: 10,
       bundlePath: window.location.href.replace(/\#.*/g, "").replace(/\?.*/g, "") + "./pagefind/",
       translations: {
-        placeholder: "Search Knowledge Base"
+        placeholder: "Search Knowledge Base",
+        clear_search: "✕"
       }
     });
 
@@ -553,6 +762,8 @@ document$.subscribe(function() {
       // Observe changes inside the search container to capture dynamic results
       observer.observe(__searchContainer, { childList: true, subtree: true });
     }
+
+    handleKeyboard(__searchContainer, true);
   }
 
   if (window.location.href.includes("knowledge_base") &&
@@ -604,7 +815,7 @@ document$.subscribe(function() {
     const searchQuery = "renesas rz";
 
     // Import the Pagefind API library
-    const pagefind = await import(window.location.href.replace(/\#.*/g, "").replace(/\?.*/g, "") + "./pagefind/pagefind.js");
+    const pagefind = await import(local_base.replace('ext/', 'pagefind/pagefind.js'));
 
     // Run the search immediately on load
     const searchResults = await pagefind.search(searchQuery);
