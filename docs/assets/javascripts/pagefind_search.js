@@ -1,4 +1,10 @@
+let controller;
+
 document$.subscribe(function() {
+  // Abort previous listeners before binding new ones
+  if (controller) controller.abort();
+  controller = new AbortController();
+
   // Helper
   async function checkLinkExists(url) {
     try {
@@ -422,7 +428,7 @@ document$.subscribe(function() {
       //     currentIndex = idx;
       //   });
       // });
-    });
+    },{ signal: controller.signal });
   }
 
   // common search -------------------------------------------------------------
