@@ -78,6 +78,7 @@ def do_pagefind(target, exclude_files):
             command = "grep -rlZ 'data-md-component=\"content\"' " + target + " | xargs -0 sed -i " \
                       "'s/data-md-component=\"content\"/data-md-component=\"content\" data-pagefind-body/g'"
     else:
+        modify_rzv_ai(target)
         command = "grep -rlZ 'section' " + target + " | xargs -0 sed -i " \
                   "'s/section/section data-pagefind-body/g'"
     do_subprocess(command)
@@ -120,6 +121,37 @@ def check_target_site_pagefind_version(out_path):
         return True
     else:
         return False
+
+def modify_rzv_ai(target):
+    import copy
+    from pathlib import Path
+    from bs4 import BeautifulSoup
+
+    root_folder = Path(target)
+
+    html_files = list(root_folder.rglob("*.html"))
+
+    for file_path in html_files:
+        html_content = file_path.read_text(encoding="utf-8")
+        soup = BeautifulSoup(html_content, "html.parser")
+
+        source_section = soup.select_one("#page-top")
+        if not source_section:
+            source_section = soup.select_one(".top")
+        else:
+            btn = source_section.select_one(".btn")
+            if btn:
+                btn.clear()
+
+        target_section = soup.select_one("h1")
+
+        if source_section and target_section:
+            target_section.clear()
+
+            for child in source_section.contents:
+                target_section.append(copy.copy(child))
+
+            file_path.write_text(str(soup), encoding="utf-8")
 
 # ------------------------------------------------------------------------------
 
