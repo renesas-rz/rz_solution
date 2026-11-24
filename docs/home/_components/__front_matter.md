@@ -16,3 +16,6 @@
 
     2.  Coming in 2026/4Q.[↩](#tfref:2){: .tf-backref }
     {: #tf:2 }
+
+    3.  The official production-grade Ubuntu images for these MPUs are published and maintained by Canonical.[↩](#tfref:3){: .tf-backref }
+    {: #tf:3 }
