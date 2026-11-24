@@ -91,7 +91,7 @@ def do_pagefind(target, exclude_files):
 
     do_weighting(target)
 
-    command = "python -m pagefind --source " + target
+    command = python_executable() + " -m pagefind --source " + target
     do_subprocess(command)
 
 def pagefind_excludes():
@@ -115,7 +115,8 @@ def check_target_site_pagefind_version(out_path):
     with open(json_path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
-    version = do_subprocess("python -m pagefind --version").stdout
+    command = python_executable() + " -m pagefind --version"
+    version = do_subprocess(command).stdout
 
     if data['version'] in version:
         return True
@@ -152,6 +153,11 @@ def modify_rzv_ai(target):
                 target_section.append(copy.copy(child))
 
             file_path.write_text(str(soup), encoding="utf-8")
+
+def python_executable():
+    import sys
+
+    return sys.executable
 
 # ------------------------------------------------------------------------------
 
