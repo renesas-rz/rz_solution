@@ -16,12 +16,16 @@ def on_post_build(config, **kwargs):
 def do_subprocess(command):
     import subprocess
 
+    env = os.environ.copy()
+    env["GIT_TERMINAL_PROMPT"] = "0"
+
     res = subprocess.run(
         command,
         shell=True,          # Required for shell features like pipes (|)
         capture_output=True, # Captures stdout/stderr
         text=True,           # Returns data as strings instead of bytes
-        check=True           # Throws an exception if the pipeline fails
+        check=True,          # Throws an exception if the pipeline fails
+        env=env              # Suppress Username Prompt (git clone)
     )
 
     return res
@@ -166,8 +170,10 @@ def git_clone(repo_url, out_path):
     try:
         do_subprocess("git clone --branch gh-pages --depth 1 " + repo_url + " " + out_path)
     except:
-        do_subprocess("git clone --depth 1 " + repo_url + " " + out_path)
-        res = False
+        try:
+            do_subprocess("git clone --depth 1 " + repo_url + " " + out_path)
+        except:
+            res = False
     return res
 
 def git_sync(out_path):
@@ -291,10 +297,11 @@ def generate_metadata(this_site, local_link, outside_link, site_dir):
         tmp_area = pwd + "/tmp/pagefinded/" + repo_name
         deploy_area = site_dir + "/" +  local_link + repo_name
 
+        is_cloned = True
         is_gh_pages = True
         if not os.path.isdir(out_path):
             log.debug("`" + repo_name + "` - Cloning...")
-            git_clone(repo_url, out_path)
+            is_cloned = git_clone(repo_url, out_path)
         else:
             do_fetch = True
 
@@ -304,7 +311,11 @@ def generate_metadata(this_site, local_link, outside_link, site_dir):
                 log.debug("`" + repo_name + "` - Cannot Pull, Remove...")
                 remove_dir(out_path)
                 log.debug("`" + repo_name + "` - Re-cloning...")
-                git_clone(repo_url, out_path)
+                is_cloned = git_clone(repo_url, out_path)
+
+        # source not found
+        if not is_cloned:
+            continue
 
         # check current branch
         is_gh_pages = git_branch_is_gh_pages(out_path)
