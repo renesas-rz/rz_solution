@@ -40,7 +40,11 @@ banners:
       - name: RZ/G
         supported: true
       - name: RZ/V
-        supported: false
+        supported: true
+      - name: RZ/T
+        supported: true
+      - name: RZ/N
+        supported: true
     description: Latest Ubuntu/Debian based on The Latest VLP.
     release_cadence: Every 2yrs
     support: 2yrs
